@@ -34,7 +34,6 @@ public class MainClass {
 		while((i=fr.read())!=-1) // 파일이 끝일때 종료 => -1  EOF
 		{
 			data+=(char)i;
-		
 		}
 		fr.close();
 		System.out.println(data);
