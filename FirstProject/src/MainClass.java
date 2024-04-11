@@ -30,13 +30,13 @@ public class MainClass {
 		// TODO Auto-generated method stub
 		FileReader fr=new FileReader("c:\\javaDev\\movie.txt");
 		int i = 0;
-		String data="";
+		StringBuffer data=new StringBuffer(); // react
 		while((i=fr.read())!=-1) // 파일이 끝일때 종료 => -1  EOF
 		{
-			data+=(char)i;
+			data.append((char)i);
 		}
 		fr.close();
-		System.out.println(data);
+		System.out.println(data.toString());
 	}
 
 }
