@@ -28,9 +28,9 @@ public class MainClass {
 
 	public static void main(String[] args) throws Exception{
 		// TODO Auto-generated method stub
-		FileReader fr=new FileReader("c:\\javaDev\\movie.txt");
+		FileReader fr=new FileReader("c:\\javaDev\\movie.txt"); // text 파일 읽어 옴
 		int i = 0;
-		StringBuffer data=new StringBuffer(); // react
+		StringBuffer data=new StringBuffer(); // react 저장하는 가상 메모리를 가져서 속도가 빠르다.
 		while((i=fr.read())!=-1) // 파일이 끝일때 종료 => -1  EOF
 		{
 			data.append((char)i);
