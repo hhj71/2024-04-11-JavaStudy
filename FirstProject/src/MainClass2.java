@@ -82,7 +82,7 @@ public class MainClass2 {  // 괄효는 항상 옆으로 붙여주는게 좋다.
 	System.out.println("★★★★");
 	System.out.println("★★★★★");
 	
-	
+		
     /*
      * ★★★★★
      * ★★★★
