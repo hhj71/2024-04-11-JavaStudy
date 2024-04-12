@@ -56,7 +56,10 @@
  *      *** 정수 표현법 10진법/8진법/16진법/2진법
  *                         
  *      -----------------------------------
- *      실수형
+ *      실수형 : 소수점
+ *             float => 4byte => 소수점 6자리 => ex) 10.5F(f)
+ *             double => 8byte => 소수점 15자리
+ *             double => 실수형의 default => 10.5
  *      ----------------------------------
  *      참조형 : 데이터를 여러개 한번에 저장하는 방법 
  *                ex) 배열/클래스
@@ -82,6 +85,15 @@ public class 변수_2 {
 		System.out.println('A'+'+');
 		System.out.println(0b1010);
 		System.out.println(01010);
+	
+		
+		float f = 10.5f;
+		double d = 10.5D; //D는 생략가능
+		
+		System.out.println(f);
+		System.out.println(d);
+		
+		
 	}
 
 }
