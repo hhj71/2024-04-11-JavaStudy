@@ -18,11 +18,43 @@
  *      데이터타입 변수명;
  *      ----------------정수, 실수, 문자, 논리
  *      ------------------------------------
- *      정수형
+ *      정수형 
+ *       byte 
+ *       int => 가장 많이 사용하는 정수형(디폴트값)
+ *              사용처 - 모든 프로그램의 정수형이 필요한 경우
+ *       long => 데이터 수집 => 라이브러리 제작할 때
+ *      (2^63)     ex)영화 댓글 모아서 긍정/부정 따져보고 추천해주는 기능 만들때 사용
+ *       bit => 0이나 1만 저장하는 공간 / 8bit = 1byte
+ *       양수/음수 바꾸는 거 https://blog.naver.com/choixj/222338072428 참고 
+ *       1의 보수 / 2의 보수
  *      -----------------------------------
- *      논리형
+ *      논리형 : boolean => true/false
+ *             조건이 있는 경우에 주로 사용 ex) 로그인, 검색어, 페이지 등...
+ *             boolean => 변수 설정할 때 앞에 b를 많이 넣는 편  ex) bLogin, bCheck....
+ *             - 사용법 
+ *             boolean bCheck = false            
  *      -----------------------------------
- *      문자형
+ *      문자형 : char => 2byte (0~65535)
+ *             문자는 양수로만 되어 있다
+ *             => 표현하는 문자가 많이 있다.
+ *             => Unicode : 각국의 언어를 사용할 수 있다.
+ *             => char는 문자 한개만 저장이 가능 => ''
+ *                *문자 여러개 저장 할 때 는 ""=> char 사용X => String (char 배열) 사용
+ *             => char는 저장시에 해당 번호로 변경해서 저장 (ASC 코드)
+ *             - 사용법 (31 page)
+ *               char fname='홍';
+ *               char alpha='A';
+ *                * A+, A-  같은 애들은 char 사용 못함..-> "A+","A-"
+ *             => char는 연산시에 무조건 정수형으로 변경 처리된다!
+ *                'A'+1 => 66
+ *                 ┗ 65
+ *              * "A"+1 => "A1"
+ *      
+ *      * 7+"7"+7+7 ==> "7777"  ==> 문자열 결합
+ *        7+7+"7"+7 ==> "1477"        
+ *                     
+ *      *** 정수 표현법 10진법/8진법/16진법/2진법
+ *                         
  *      -----------------------------------
  *      실수형
  *      ----------------------------------
@@ -37,7 +69,19 @@ public class 변수_2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+        // 모든 숫자는 다 int
+		System.out.println(0b11111111); // int로 인식되서 0b 붙였어도 0다 생략됨
+		System.out.println(~127); // ~ 는 음수를 표현할 때 쓰는 연산자
+		System.out.println('A'+'B'); //131
+		System.out.println("A"+"B"); //AB
+		System.out.println((int)'A'); //65
+		System.out.println((int)'a'); //97
+		System.out.println((int)'0'); //48
+		System.out.println((int)'+'); 
+		System.out.println((int)'A');
+		System.out.println('A'+'+');
+		System.out.println(0b1010);
+		System.out.println(01010);
 	}
 
 }
