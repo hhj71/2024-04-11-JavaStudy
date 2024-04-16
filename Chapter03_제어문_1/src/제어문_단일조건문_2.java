@@ -59,7 +59,7 @@ public class 제어문_단일조건문_2 {
 		 *                                              
 		 */
 		System.out.println("===== 게임 결과 =====");
-		int result=com-user;                       //아래내용 변형
+		int result=com-user;                       //아래내용 변형 / 코드를 간소화시킴/ 알고리즘
 		if (result==-2 || result==1)
 			System.out.println("컴퓨터 Win");        
 		if (result==-1 || result==2)
