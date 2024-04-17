@@ -35,7 +35,7 @@ public class 제어문_조건문_4 {
 		 *    3) 논리: nextBoolean()
 		 *    4) 문자열: next() ==> String
 		 *       ** 문자 추출 => next().charAt(index) 
-		 *       ex)
+		 *       ex) 
 		 *       ABCDEFG   => next().charAt(6) => 'G' => char
 		 *       0123456
 		 */
