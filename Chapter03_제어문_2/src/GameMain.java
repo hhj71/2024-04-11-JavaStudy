@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class GameMain extends JFrame implements KeyListener{
    GameView gv=new GameView();
 	public GameMain()
-    {    
+    {      
 		add("Center", gv);
     	setSize(900,650);
     	setVisible(true);

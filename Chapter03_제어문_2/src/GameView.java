@@ -5,7 +5,7 @@ public class GameView extends JPanel {
          int x=750;
          int y=500;
 	public GameView() 
-	{
+	{ 
 		back=Toolkit.getDefaultToolkit().getImage("C:\\javaDev\\back.jpg");
 		horse=Toolkit.getDefaultToolkit().getImage("C:\\javaDev\\horse.gif");
 	}

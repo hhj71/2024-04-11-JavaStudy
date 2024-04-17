@@ -15,7 +15,7 @@ public class 제어문_조건문_2 {
          System.out.println("num3="+num3);
          int max=num1;
          if(max<num2)
-        	 max=num2;
+        	 max=num2; 
          if(max<num3)
         	 max=num3;
          System.out.println("Max="+max);
