@@ -27,13 +27,13 @@ public class GameMain extends JFrame implements KeyListener{
 
 
 	@Override
-	public void keyPressed(KeyEvent e) {
+	public void keyPressed(KeyEvent e) {                   //키보드가 눌렸을 때 
 		// TODO Auto-generated method stub
 		if(e.getSource()==this) {
-			if(e.getKeyCode()==KeyEvent.VK_LEFT) {
-				gv.x-=5;
-				if(gv.x<0)
-					gv.x=700;
+			if(e.getKeyCode()==KeyEvent.VK_LEFT) {        //키보드 방향키 왼쪽을 누르면 말 그림이 왼쪽으로 이동함
+				gv.x-=5;                                  // x좌표의 -5만큼 이동
+				if(gv.x<0)                                // x좌표 왼쪽 끝까지 갔으면 
+					gv.x=700;                             // 다시 처음 위치로 돌아가기
 				gv.repaint();
 			}
 		}
