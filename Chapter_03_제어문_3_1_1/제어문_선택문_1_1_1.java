@@ -93,7 +93,7 @@
  *               break가 없는 경우 => 밑에 있는 break까지 수행
  */                
 import java.util.Scanner;
-public class 제어문_선택문_1_1 { 
+public class 제어문_선택문_1_1_1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -136,7 +136,7 @@ public class 제어문_선택문_1_1 {
         	//*** case에 등록된 값이 중복되면 오류 발생 
         	//*** 데이터가 일치 => case에 등록되는 데이터형 통일 
         }
-         
+        
 	}
  
 }
