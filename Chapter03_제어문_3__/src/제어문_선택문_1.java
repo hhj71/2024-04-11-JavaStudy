@@ -93,7 +93,7 @@
  *               break가 없는 경우 => 밑에 있는 break까지 수행
  */                
 import java.util.Scanner;
-public class 제어문_선택문_1_1 {
+public class 제어문_선택문_1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
