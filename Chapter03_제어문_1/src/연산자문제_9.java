@@ -5,7 +5,7 @@ public class 연산자문제_9 {
 		// TODO Auto-generated method stub
 		int num1 = 2;
 	    int num2 = 7;
-	    int num3; 
+	    int num3;  
 	    int num4; 
 	    num1++; //3
 	    num3 = --num1; //num3=2, num1=2
