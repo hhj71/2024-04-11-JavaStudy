@@ -7,7 +7,7 @@ public class 연산자문제_6 {
 		int num1=10, num2=10;   
 	       int a, b;   
 	       a = ++num1;
-	       b = num2++;
+	       b = num2++; 
 
 	       System.out.printf("%d, %d \n", b, num2);
 
