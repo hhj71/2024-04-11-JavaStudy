@@ -41,11 +41,43 @@
  *                 { 해당 조건이 없는 경우에 수행 문장 => 필요시에만 처리(생략이 가능)
  *                 }                                      
  */   
+import java.util.Scanner;
 public class 제어문_조건문_7 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Scanner scan= new Scanner(System.in);
+		// 클래스 메모리 저장 => new 
+		// System.in => 키보드 입력값
+		System.out.print("국어점수:");
+		int kor = scan.nextInt();
+		System.out.print("영어점수:");
+		int eng = scan.nextInt();
+		System.out.print("수학점수:");
+		int math = scan.nextInt();
+		 System.out.println("국어 점수:"+kor);
+	     System.out.println("영어 점수:"+eng);
+	     System.out.println("수학 점수:"+math);
+	     System.out.println("총점:"+(kor+eng+math));
+	     System.out.printf("평균:%.2f\n",(kor+eng+math)/3.0);
+	     // 학점을 구하라는 요청 -> 다중 조건문 사용
+	     char score='A';
+	     int avg = (kor+eng+math)/3;
+	     
+	     if (avg>=90) {
+	    	 score='A';
+	     } else if (avg>=80){
+	    	 score='B';
+	     } else if (avg>=70) {
+	    	 score='c';
+	     } else if (avg>=60) {
+	    	 score='D';
+	     } else {
+	    	 score='F';
+	     }
+	     
+	   System.out.println("학점:"+score); 
+	     
 	}
 
 }
