@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class 연산자문제_2 {
+public class 연산자문제_2 { 
 
 	public static void main(String[] args) {
 		 int money=369;
