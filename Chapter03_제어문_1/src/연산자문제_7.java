@@ -2,7 +2,7 @@
 public class 연산자문제_7 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
 		 int num1=10, num2=10;   
 	        int a, b;   
 	        num1 = num1 + 1;
