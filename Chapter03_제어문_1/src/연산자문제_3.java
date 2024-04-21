@@ -1,5 +1,5 @@
 
-public class 연산자문제_3 {
+public class 연산자문제_3 { 
 	public static void main(String[] arg) 
 	{  
 	      int num1, num2;   
