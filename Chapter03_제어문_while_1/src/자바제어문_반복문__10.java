@@ -1,5 +1,5 @@
 
-public class 자바제어문_반복문10 {
+public class 자바제어문_반복문__10 {
 	 /*       int i=1;
 	  *    while(i<=5)
 	  *    {
