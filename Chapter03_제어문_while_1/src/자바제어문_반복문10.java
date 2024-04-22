@@ -1,16 +1,22 @@
 
 public class 자바제어문_반복문10 {
- /*
-  *  int i=1;
-  *  
-  * 
-  * 
-  * 
-  * 
-  * 
-  * 
-  * 
-  */
+	 /*       int i=1;
+	  *    while(i<=5)
+	  *    {
+	  *       System.out.println(i);
+	  *       i++;
+	  *    }
+	  *    
+	  *    i=1 i<=5 i출력 i++
+	  *    i=2 i<=5 i출력 i++
+	  *    i=3 i<=5 i출력 i++
+	  *    i=4 i<=5 i출력 i++
+	  *    i=5 i<=5 i출력 i++
+	  *    
+	  *    i=6 i<=5 => 종료
+	  *       ------ false => 종료 
+	  *   
+	  */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//0,1의 갯수
