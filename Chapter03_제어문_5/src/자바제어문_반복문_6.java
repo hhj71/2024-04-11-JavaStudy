@@ -11,6 +11,14 @@ public class 자바제어문_반복문_6 {
 		Scanner scan = new Scanner(System.in);
 		
 		int dan = 0;
+		// 프로그램에 필요한 데이터를 사용자로부터 받아서 => 오류체크
+		/*
+		 * for(int i=0; i<10; i++)
+		 *    {
+		 *        int j=10;
+		 *     } //i,j는 for문 종료시까지만 사용가능 => 블록변수 - {}를 벗어나면 자동으로 삭제됨
+		 *        
+		 */
 		for (;;) //무한 루프
 		{   
 			System.out.print("2~9사이의 정수 입력:");
