@@ -1,3 +1,4 @@
+//
 
 public class 문제11 {
 
@@ -5,5 +6,5 @@ public class 문제11 {
 		// TODO Auto-generated method stub
 
 	}
-
+        
 }
