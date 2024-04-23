@@ -101,9 +101,79 @@
  *     						=> 메뉴 => 1개 선택 > 윈도우창 => 네트워크
  *                          => 조건문
  *              2) 반복문 : for/ while/ do~while
- *                    
+ *                  - for: 반복 횟수가 존재 => 화면 UI => 15~20개 
+ *                         => 페이징 기법(인라인뷰)
+ *                         => 가장 많이 사용되는 반복문
+ *                         형식)   [시작위치] [종료위치]  ┌ 종료위치가 될 수 있게
+ *                             for(초기값;   조건식;  증감식)
+ *                             {
+ *                             		실행문장
+ *                             } 
+ *                             for(int i=1; i<=3; i++)
+ *                             {
+ *                                 문장
+ *                             }
+ *                             i=1 if(i<=3) 문장수행 => i++
+ *                             i=2 if(i<=3) 문장수행 => i++
+ *                             i=3 if(i<=3) 문장수행 => i++
+ *                             i=4 if(i<=3) ---- false => 문장수행 x
+ *                  - while: 무한반복 (반복횟수를 모르는 경우) 
+ *                  		  => 서버프로그램 (Back-end)
+ *                            => 파일읽기/ 데이터베이스/ 빅데이터 (챗봇)
+ *                            형식)
+ *                                초기값 -----------1
+ *                                        | false => 종료
+ *                                  while(조건식)<--┐
+ *                                  {             |
+ *                                        | true  |
+ *                                     반복 실행 문장 |
+ *                                     증가식       |
+ *                                  } ------------┘    
+ *                         단점 => 한번도 수행을 못할 수도 있다 => 보완 do~while
+ *                  -do~while : 조건을 나중에 검색 => 반드시 한번은 수행한다
+ *                                 -> 사용빈도는 거의 없다
+ *                           형식)
+ *                                do
+ *                                {
+ *                                   반복수행문장
+ *                                     증가식
+ *                                 } while(조건식)
+ *                                       
  *              3) 반복제어문 : break, continue            
- *    
+ *                    -break => 제어문을 종료 => 반복문, 선택문
+ *                    	for(int i=1;i<=5;i++)
+ *                       {
+ *                       	if(i==3) break;  ==> 1,2 ==> 3일때 종료
+ *                       }
+ *                       
+ *                       ** for,while => break를 사용하면 종료
+ *                       
+ *                      for(int i=1;i<=5;i++)
+ *                       {
+ *                       	if(i==3) continue; => 3일때 증가식으로 올라간다
+ *                                     => 1,2,4,5 => 3을 제외
+ *                       }
+ *                       
+ *                    -continue => 반복문에서만 사용됨
+ *                          --> for에서 continue를 사용하면 증가식으로 이동
+ *                          --> while에서 continue를 사용하면 조건식으로 이동   
+ *                               -> 주의점: continue를 잘못 사용하면 무한루프
+ *                             ex)
+ *                                int i=1; 
+ *                                while(i<=5)
+ *                                {
+ *                                	if(i==3) continue;
+ *                                  System.out.println(i)
+ *                                  i++;
+ *                                }
+ *                                
+ *                                 i=1 => i<=5 => 1 => i++
+ *                                 i=2 => i<=5 => 2 => i++
+ *                                 i=3 => continue => i<=5 ==> 무한 루프
+ *                                         
+ *                  
+ *                  
+ *                  
  * -------------- 한개의 기능 설정 -> 메소드
  * ----------------------------------------------------------------------------- + 통합 (클래스)
  *  클래스 : 데이터형 / 통합 
@@ -114,7 +184,30 @@ public class 자바제어문_1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+          System.out.println("===== for-break 반복문 중단 =====");
+          for(int i=1; i<=5; i++)
+          {
+        	  if(i==3) break;
+        	  System.out.println("i="+i);
+          }
+          System.out.println("===== while-break 반복문 중단 =====");
+          int i=1;
+          while(i<=5)
+          {
+        	  if(i==3) break;
+          System.out.println("i="+i);
+               i++;
+          }
+          System.out.println("===== do~while-break 반복문 중단 =====");
+          i=1; 
+          do
+          {
+        	  if(i==3) break;
+              System.out.println("i="+i);
+                   i++;
+          }while(i<=5);
+          
+          
 	}
 
 }
