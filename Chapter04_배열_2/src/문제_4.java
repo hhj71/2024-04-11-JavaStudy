@@ -4,8 +4,7 @@
  
  */
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 public class 문제_4 {
 
 	public static void main(String[] args) {
@@ -19,8 +18,13 @@ public class 문제_4 {
 		{
 			arr[i]=(int)(Math.random()*100)+1;
 		}
-	      System.out.println(Arrays.toString(arr));// 저장한 값 확인
-		
+	      System.out.println(Arrays.toString(arr));// 저장된 값 확인
+	    //3 출력
+			for(int i:arr)// 실제 저장된 값을 읽어 온다 
+			{
+				if(i%3==0)
+					System.out.print(i+" ");
+			}
 		
 		/*	for(int i=0; i<arr.length; i++)
 		{   

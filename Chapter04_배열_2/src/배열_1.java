@@ -1,9 +1,19 @@
 /*
+ * 1. 배열 생성 
+ *      => 같은 데이터형만 모아서 관리 
+ *      => 데이터형[] 배열명;
+ *         --------
+ *      => 데이터형 배열명[]; => 사용은 가능 (C/C++)
+ * 
  * 2. 초기화
- * => 데이터형[] 배열명={값,값....}
- * 
- * 
- * 
+ *      => 데이터형[] 배열명={값,값...} => 변경하지 않는 데이터형 
+ *      => 데이터형[] 배열명=new 데이터형[갯수]
+ *      => 기본 디폴트 값 
+ *            int => 0
+ *            char => '\0'
+ *            double => 0.0
+ *            long => 0L
+ *            boolean => false 
  * 3. 저장 갯수 확인
  *  => length => 배열명.length
  * 
@@ -99,9 +109,11 @@ public class 배열_1 {
 			System.out.println(s);
 		}
 		
-		double[] dd =new double[5];
+		double[] dd =new double[5]; //0.0
 		for(double d:dd)
-		
+		{
+			System.out.println(d);
+		}
 		
 		}
 
