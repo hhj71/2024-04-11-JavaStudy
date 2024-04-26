@@ -10,8 +10,8 @@
  *      	- 같은 자리 일때 : S 
  *      	- 다른 자리 일때 : B
  */
-import java.util.Arrays;
-import java.util.Scanner; // 사용자 입력
+
+import java.util.*; // 사용자 입력
 /*
  *  2장 / 3장 / 4장
  *   |    |  ---------> 묶음 
@@ -285,20 +285,6 @@ public class 중첩_for_6 {
 		
 		// 오답이면 다시 입력 가능
 		//      continue
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		
