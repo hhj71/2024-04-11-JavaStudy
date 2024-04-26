@@ -39,12 +39,8 @@
  *        10 20 30 40 50
  *        -----------
  *           고정 ------------------> 결론적으로 for문이 length-1바퀴만큼 실행된다.
- *         
- *                       
- *                       
+ *                        
  *    버블 정렬
- *    
- * 
  */
 import java.util.*;
 public class 중첩_for_8 {
@@ -70,6 +66,17 @@ public class 중첩_for_8 {
 				arr[j]=temp;
 				}
 			}
+			/*
+	         *   int a=10
+	         *   int b=20
+	         *   a=b =======> 20
+	         *   b=a ==> 20
+	         *     
+	         *   
+	         *   int temp=a; temp=10
+	         *   a=b => a=20
+	         *   b=temp=> b=10 
+	         */
 		}
 		System.out.println(Arrays.toString(arr));
 	}
