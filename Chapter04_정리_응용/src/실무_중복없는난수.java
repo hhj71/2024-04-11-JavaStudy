@@ -1,4 +1,4 @@
-
+import java.util.Arrays;
 public class 실무_중복없는난수 {
 
 	public static void main(String[] args) {
@@ -25,7 +25,9 @@ public class 실무_중복없는난수 {
 					
 				}
 			}
+			lotto[i]=su;
 		}
+		System.out.println(Arrays.toString(lotto));
 	}
 
 }
