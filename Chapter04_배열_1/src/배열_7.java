@@ -26,20 +26,37 @@ public class 배열_7 {
 		  *    
 		  */
 		  char[] strWeek= {'일', '월', '화' ,'수', '목', '금', '토'};
-		  int[] lastday = {31,28,31,30,31,30,
-				  		   31,31
-		  }
-		 // 2.요청한 전
-		 
-		 
-		 // 결과값 출력
-		 System.out.println(year + "년도 "+month+"월"+day+"일");
+		  int[] lastday = {31,28,31,30,31,30,31,31,30,31,30,31};
+		  
+		  // 1. 1년도 1월 1일부터 ~ 요청한 년도의 전년도까지의 총날수 
+	        int total=(year-1)*365
+	        		 +(year-1)/4
+	        		 -(year-1)/100
+	        		 +(year-1)/400;
+	        // 2. 요청한 전달까지의 날수 
+	        if((year%4==0 && year%100!=0)||(year%400==0))//윤년이라면 
+	        {
+	        	lastday[1]=29;
+	        }
+	        else
+	        {
+	        	lastday[1]=28;
+	        }
+	        for(int i=0;i<month-1;i++)
+	        {
+	        	total+=lastday[i];
+	        }
 		 
 		  //요청한 일
 		  total+=day;
 		 
 		  //요일 구하기 
 		 int week = total%7;
+		
+		 // 결과값 출력
+		 System.out.println(year + "년도 "+month+"월"+day+"일은 "+strWeek[week]+"요일입니다");
+	}
+				 
 	}
 
-}
+
