@@ -47,7 +47,7 @@ public class 자바제어문_반복문_9 {
         	default: 
         		 System.out.println("F학점");
         	 }
-        	 
+        	  
          }
 	}
 
