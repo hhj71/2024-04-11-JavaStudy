@@ -321,7 +321,7 @@ public class 문자열배열_4 {
 				 ,17,25,28,37,43,44
 				 ,1,4,10,12,28,45
 		 	};
-		 int[] result=new int[46];
+		 int[] result=new int[46]; // 0~45까지 배열에 넣어야 인덱스번호랑 실제 번호랑 일치함. 그래서 크기가 46이다.
 		 for(int i=0; i<lotto.length;i++)
 		 {
 			 result[lotto[i]]++;
