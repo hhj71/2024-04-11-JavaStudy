@@ -2,7 +2,7 @@
  * 11.	정수 입력을 받아서 60이상 합격 =>불합격  if~else
  */
 import java.util.Scanner;
-public class 문제_11 {
+public class 문제__11 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
