@@ -3,8 +3,8 @@ public class 문자열배열_4 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		 int [] lotto = {
-				 15,16,17,25,30,31,7,12,23,32,34,36
+		int [] lotto = {15,16,17,25,30,31,
+				 7,12,23,32,34,36
 				 ,10,16,19,32,33,38
 				 ,11,13,20,21,32,44
 				 ,16,20,26,36,42,44
