@@ -321,18 +321,18 @@ public class 문자열배열_4 {
 				 ,17,25,28,37,43,44
 				 ,1,4,10,12,28,45
 		 	};
-		 int[] result=new int[46]; // 0~45까지 배열에 넣어야 인덱스번호랑 실제 번호랑 일치함. 그래서 크기가 46이다.
+		 int[] result=new int[46]; 
+		 // 배열에 0~45까지 넣어야 인덱스번호랑 실제 번호랑 일치함. 그래서 배열의 크기는 46.
+		 // 그래야 빈도수 비교 쉽게 가능함.
 		 for(int i=0; i<lotto.length;i++)
 		 {
 			 result[lotto[i]]++;
 		 }
-		 for(int i=1; i<result.length;i++)
+		 for(int i=1; i<result.length;i++) //1~45 의 빈도수를 알고싶은 거니까 i=1부터 시작
 		 { 		
-			 if(result[i]>=49)
+			 
 			 System.out.println(i+":"+result[i]);
 		 }
-		
-		
 		
 	}
 
