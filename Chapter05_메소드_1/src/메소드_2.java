@@ -30,17 +30,18 @@ public class 메소드_2 {
  
 		Scanner scan = new Scanner(System.in);
 		System.out.print("아이디 입력:");
-		String ID= scan.next();
+		String id= scan.next();
 		System.out.print("비밀번호 입력:");
-		String PWD= scan.next();
+		String pwd= scan.next();
 		// 기능 요청
 		// 메소드에서 넘겨주는 결과값을 받는다
-		boolean bCheck = isLogin(ID,PWD);
+		boolean bCheck = isLogin(id,pwd);
 		// 숫자인 경우에는 => 큰 데이터형으로 받을 수 있다
 		// int(리턴형) => long, double
+		// 가능 처리 ==> 윈도우 , 브라우저에 출력 
 		if (bCheck)
 		{
-			System.out.println(ID+"님 로그인 되었습니다!!");
+			System.out.println(id+"님 로그인 되었습니다!!");
 		}
 		else
 		{

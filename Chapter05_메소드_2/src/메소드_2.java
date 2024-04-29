@@ -31,15 +31,15 @@ public class 메소드_2 {
 	 // 호출영역 => call stack
 	/*
 	 * 
-	 * 
-	 *                           ccc()  ccc()
+	 *                                    ddd() ====> 메모리 해제
+	 *                           ccc()    ccc() ====> 메모리 해제
 	 * -------
-	 *                   bbb()   bbb()   bbb()
+	 *                   bbb()   bbb()    bbb() ====> 메모리 해제
 	 * ------- 
-	 *           aaa()    aaa()  aaa()    aaa()
-	 * -------   
-	 * main      main     main    main     main
+	 *           aaa()    aaa()  aaa()    aaa() ====> 메모리 해제
+	 * main      main     main    main     main ====> 메모리 해제 프로그램 종료
 	 * ------- 
+	 * CALL Stack
 	 */
 
 	public static void main(String[] args) {

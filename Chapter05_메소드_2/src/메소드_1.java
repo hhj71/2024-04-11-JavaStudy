@@ -138,11 +138,20 @@ public class 메소드_1 {
 	 *  호출 => double d = rand(3)
 	 *         ----------- 리턴한 값을 받는다 (데이터형 일치)
 	 *  String getName()
-	 *  호출 =>        
+	 *  호출 => String name=getName()       
 	 *  String setName(String name)
-	 *  호출 => 
+	 *  호출 => String name=setName("홍길동")
 	 * 
-	 * 
+	 * ** 메소드는 호출시에 무조건 메소드의 시작부터 끝까지 수행한다 
+     *                     -----       ----------------
+     *       메소드()
+     *       {
+     *         ---------
+     *         
+     *         ---------
+     *       }
+     *       
+     *       수행이 종료가 되면 호출된 위치로 복귀 
 	 * 
 	 */
 	public static void main(String[] args) {
