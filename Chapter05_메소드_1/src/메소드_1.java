@@ -28,7 +28,7 @@
  *       자바: 메소드 => 클래스 종속
  *       c/c++: 함수 => 독립적으로 사용
  * 
- *  3. 데이터의 저장 방법   ==================> 데이터 처리(요청받은 내용)  =======================> 요청 결과를 전송
+ *  3. 데이터의 저장 방법   ==================> 데이터 처리(요청받은 내용)  =============> 요청 결과를 전송
  *     -------------                       ------------------
  *     | 변수(한개)                            데이터 가공
  *     | 배열(여러개)                           |연산자
@@ -147,13 +147,13 @@
  *              리턴형             매개변수                                                                                                                    
  *        ---------------------------------
  *                o                 o
- *           ex) String substring(int beginIndex, int beginIndex)    
+ *           ex) String substring(int start, int end)    
  *        ---------------------------------
  *                o                 x
  *           ex) double random() => 결과값은 0.0 ~ 0.99 => 실수 결과값을 리턴함  
  *        ---------------------------------
  *                x                 o   
- *           ex)      
+ *           ex) void println("aaa") => 결과값이 없는 경우 void   
  *        ----------------------------------
  *                X                 X                       
  *           ex) void println() => 다음줄에 출력
@@ -179,11 +179,11 @@
  *                              --------   -------------
  *                                일치 => 형변환 / 큰 데이터형으로 받는 경우
  *               
- *     5) 반복을 제어                                                                    
- *          ex) 
- *              오라클 열기
- *          
- *          
+ *     5) 반복을 제거                                                                    
+ *          ex) -> 예
+ *              -> 오라클 열기
+ *              -> 오라클 닫기
+ *          ------------------ 메소드화
  *              오라클 연결
  *               문장 => 전송 (SELECT)
  *              오라클 닫기                                             
@@ -229,6 +229,10 @@ public class 메소드_1 {
 		System.out.println("===============");
 		System.out.println("display 진입전");
 		display("심청이");
+		System.out.println("===============");
+		System.out.println("display 진입전");
+		display("이순신");
+		
 		   /*  System.out.println("Hello Method");
 		     // void java.io.PrintStream.println(String x) => void => 자체 처리 한다는 뜻
 		     Math.random(); // double java.lang.Math.random()

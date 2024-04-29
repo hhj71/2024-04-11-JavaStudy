@@ -13,6 +13,19 @@ public class 메소드_계산기 {
 	{
 		return a*b;
 	}
+	static String div(int a, int b)
+	{
+		String result="";
+		if(b==0)
+		{
+			result="0으로 나눌 수 없습니다!!"; // 이 멘트를 결과로 출력하기 위해서 리턴형을 String 으로 설정함
+		}
+		else 
+		{
+			result= String.valueOf(a/b) ;
+		}
+		return result;
+	}
 	// 사용자 요청에 따라 매개변수 설정
 	// 처리 결과값 => 리턴형
 	// 리턴형은 고정된 것은 아니다....
@@ -70,30 +83,10 @@ public class 메소드_계산기 {
 	 *      => 가변형 매개변수
 	 *                                 
 	 *              
-	 *              
-	 *              
-	 *              
-	 *              
-	 *              
-	 *              
-	 *              
-	 *              
-	 *              
+	 *               
 	 *              
 	 */
-	static String div(int a, int b)
-	{
-		String result="";
-		if(b==0)
-		{
-			result="0으로 나눌 수 없습니다!!"; // 이 멘트를 결과로 출력하기 위해서 리턴형을 String 으로 설정함
-		}
-		else 
-		{
-			result= String.valueOf(a/b) ;
-		}
-		return result;
-	}
+	
 	//계산기
 	static void process()
 	{
@@ -118,20 +111,21 @@ public class 메소드_계산기 {
 			break;
 		case '/':
 			System.out.println(div(num1,num2));
+			break;
 		}
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		process();
-		// 연결만 한다. 
-		System.out.printf("%d %d %d %d %d %d");
+		// 연결만 한다. Object는 모든 데이터형을 받을 수 있다. 
+		// PrintStream java.io.PrintStream.printf(String format, Object... args)
+		//System.out.printf("%d %d %d %d %d %d");
 		Object i = 10;
 		i="";
 		i='A';
 		i=10.5;
 		i=true;
 		i=new Scanner (System.in);
-				
 		
 	}
 
