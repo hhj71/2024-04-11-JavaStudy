@@ -30,8 +30,8 @@ public class 문제_8 {
 		// TODO Auto-generated method stub
 		Scanner scan = new Scanner(System.in);
 		System.out.print("점수 입력:");
-		int s = scan.nextInt();
-		char c=munje_8(s);
+		int score = scan.nextInt();
+		char c=munje_8(score);
 		System.out.println(c);
 	}
 

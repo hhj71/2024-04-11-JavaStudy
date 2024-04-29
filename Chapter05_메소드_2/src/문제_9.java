@@ -18,8 +18,8 @@ static boolean isYear(int year)
 		// TODO Auto-generated method stub
 		Scanner scan=new Scanner(System.in);
 		System.out.print("연도 입력:");
-		int n = scan.nextInt();
-		boolean bCheck=isYear(n);
+		int year = scan.nextInt();
+		boolean bCheck=isYear(year);
 		if(bCheck==true) System.out.println("윤년");
 		else System.out.println("윤년이 아닙니다");
 	}

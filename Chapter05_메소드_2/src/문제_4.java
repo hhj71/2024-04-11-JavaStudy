@@ -3,7 +3,7 @@
 import java.util.Scanner;
 
 public class 문제_4 {
-	static double div(int a, int b)
+	static double div(int num1, int num2)
 	{
 		double d = 0.0;
 		try
