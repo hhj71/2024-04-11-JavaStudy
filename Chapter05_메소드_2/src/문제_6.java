@@ -19,11 +19,14 @@ public class 문제_6 {
 		if(c1!=c2)
 		{
 			bCheck=false;
+			break;
 		}
-		
-		
-		
+	
 		}
+		if(bCheck==true)
+	    	System.out.println("좌우 대칭입니다");
+	    else
+	    	System.out.println("좌우 대칭이 아닙니다");
 		
 	}
 	
@@ -48,7 +51,10 @@ public class 문제_6 {
 	}*/
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-       System.out.print(munje_6("abccba"));
+		Scanner scan=new Scanner(System.in);
+		System.out.print("문자열 입력:");
+		String str=scan.next();
+		munje_6(str);
 	}
 
 }

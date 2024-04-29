@@ -31,9 +31,9 @@ public class 문제_5 {
 		// TODO Auto-generated method stub
 		Scanner scan = new Scanner(System.in);
 		System.out.print("문자열 입력:");
-		String str = scan.next();
-		
-		System.out.println();
+		String str=scan.next();
+		String res = ch(str);
+		System.out.println(res);
 		
 	}
 

@@ -22,12 +22,17 @@ public class 문제_8 {
 			break;	
 		default:
 			c='F';
+			break;
 		}
 		return c;
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner scan = new Scanner(System.in);
+		System.out.print("점수 입력:");
+		int s = scan.nextInt();
+		char c=munje_8(s);
+		System.out.println(c);
 	}
 
 }

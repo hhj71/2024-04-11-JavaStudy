@@ -15,8 +15,8 @@ public class 문제_3 {
 		// TODO Auto-generated method stub
          Scanner scan = new Scanner(System.in);
          n=scan.nextInt();
-         int sum=add();		 
-         System.out.println("sum:"+sum); 
+         int sum=add(n);		 
+         System.out.println("sum="+sum); 
 		
 	}
 

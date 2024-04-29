@@ -11,7 +11,7 @@ public class 문제_4 {
 		   d=a/(double)b; //정상 수행 	
 		}catch(Exception e)
 		{
-			System.out.println("0으로 나눌 수 없습니다!!");
+			System.out.println("0으로 나눌 수 없습니다!!");//오류발생
 		}
 		return d;
 	}
@@ -23,8 +23,9 @@ public class 문제_4 {
 		int num1 = scan.nextInt();
 		System.out.print("2번 정수 입력:");
         int num2 = scan.nextInt();
+        double res = div(num1, num2);
         
-		System.out.println(div(6,3));
+		System.out.println("result="+res);
 	}
 
 }

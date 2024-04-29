@@ -15,8 +15,9 @@ public class 문제_7 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner scan = new Scanner(System.in);
-		
-		
+		System.out.print("문자열 입력:");
+		String str=scan.next();
+		munje_7(str);
 		
 		
 	}

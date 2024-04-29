@@ -12,9 +12,9 @@ static int add()
 }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        int sum=add();
+        int sum=add(); // 메소드 호출
         //리턴형이 있는 경우는 결과값을 받아야 한다. 
-		System.out.println("sum:"+sum); 
+		System.out.println("sum="+sum); 
 	}
            
 }
