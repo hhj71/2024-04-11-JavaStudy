@@ -95,6 +95,11 @@ public class 문제_2 {
 			System.out.print(binary[i]);
 		}*/
 		
+		/*     이진법으로 바꿔주는 라이브러리
+		 *		int num=10;
+				System.out.println(Integer.toBinaryString(num));
+		 */
+		
 	}
 
 }

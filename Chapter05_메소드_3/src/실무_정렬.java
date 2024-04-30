@@ -21,6 +21,7 @@ public class 실무_정렬 {
 		{
 			System.out.print(i+" ");
 		}
+		
 	}
 
 }
