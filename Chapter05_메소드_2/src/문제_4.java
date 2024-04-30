@@ -8,7 +8,7 @@ public class 문제_4 {
 		double d = 0.0;
 		try
 		{
-		   d=a/(double)b; //정상 수행 	
+		   d=num1/(double)num2; //정상 수행 	
 		}catch(Exception e)
 		{
 			System.out.println("0으로 나눌 수 없습니다!!");//오류발생
