@@ -15,7 +15,7 @@
  * 
  */
 import java.util.*;
-public class 메소드_구조적프로그램_1 {
+public class 메소드_7 {
     // 입력 부분 메소드 => 반복 제거
 	static int input(String msg)
 	{

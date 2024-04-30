@@ -7,7 +7,7 @@ public class 메소드_재사용_3 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		메소드_구조적프로그램_1.process();
+		메소드_7.process();
 	}
 
 }
