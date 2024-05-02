@@ -58,25 +58,45 @@
  *   ----------- 모든 자바는 3가지 형태로 나눠서 처리
  *   
  *  => 리턴형
- *    1. 한가지 데이터형 
- *    2. 
- *    3. 
- *    4.
- *      
+ *    1. 한가지 데이터형 (기본형) => 정수형/실수형/논리형/문자형
+ *    2.  int 메소드명()
+ *    3.  char 메소드명()
+ *    4. double 메소드명()
+ *    5. 여러개 데이터 (배열)
+ *    6. int[] 메소드명()
+ *    7. double[] 메소드명()
+ *   
+ *      => 매개변수는 여러개 사용이 가능
+ *        => 5개의 정수를 보내서 정렬하는 프로그램 
+ *           --------
+ *           메소드명(int a,int b,int c,int d,int e) => 3개까지 => 초과(배열)
+ *           메소드명(int[] arr) 
+ *     => 메소드가 호출되면 항상 메소드 처음부터 실행 ...
+ *                          ----------------
+ *     => 메소드 안에 선언되는 변수 : 메소드가 종료가 되면 사라진다
+ *        -------------------- 지역변수 (반드시 초기화)
+ *        -------------------- 매개변수 => 지역변수 동일 
  *      
  */   
 // 베열
 // 5개의 정수를 임의로 추출 => 최댓값, 최솟값
 public class 메소드_4 {
 	// 1. 정수 추출 => 입력
-	// 1. 배열 선언
-			int [] arr = new int [5];
-		   
-	
-	
+	static int[] input() // 정수 여러개를 전송 
+	{
+		int[] arr=new int[5];
+		// 2. 배열에 임의로 추출된 값을 저장 
+		for(int i=0;i<arr.length;i++)
+		{
+			arr[i]=(int)(Math.random()*100)+1; //1~100
+		}
+		
+		return arr; // 배열은 배열명만 전송 => 배열명(메모리 주소)
+	}
+	/////////////// 처리
 	
 	//2. 최댓값
-			static int max(int arr)
+	static int max(int[] arr)
 
 			{
 				int max=arr[0];
@@ -87,21 +107,65 @@ public class 메소드_4 {
 				}
 				return max;
 			}
-			
-			
+			// 3. 최소값
+	static int min(int[] arr)
+			{
+				int min=arr[0];
+				for(int i:arr)
+				{
+					if(min>i)
+						min=i;
+				}
+				return min;
+			}	
 	////////////////
 	// 4. 출력
-	static 
-	// 2. 배열에 임의로 추출된 값을 저장
-	
-	
-	public static void main(String[] args) {
+	static void process()
+	{
+				// 1. 정수 5개 받기
+				int[] arr=input();
+				int max=max(arr);
+				int min=min(arr);
+				for(int i:arr)
+					System.out.print(i+" ");
+				
+				System.out.println("\n최대값:"+max);
+				System.out.println("최소값:"+min);
+	}
+  
+ public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		process();
+		 /*// 1. 배열 선언 
+		int[] arr=new int[5];
+		// 2. 배열에 임의로 추출된 값을 저장 
+		for(int i=0;i<arr.length;i++)
+		{
+			arr[i]=(int)(Math.random()*100)+1; //1~100
+		}
+		// 3. 최대값 / 최소값
+		int max=arr[0];
+		int min=arr[0];
 		
-	
-	    process();
+		for(int i=0;i<arr.length;i++)
+		{
+			if(max<arr[i])
+				max=arr[i];
+			
+			if(min>arr[i])
+				min=arr[i];
+		}
+		
+		// 전체 정수 출력 
+		for(int i:arr)
+		{
+			System.out.print(i+" ");
+		}
+		System.out.println();// 다음줄 출력
+		// 최대값 / 최소값 출력 
+		System.out.println("최대값:"+max);
+		System.out.println("최소값:"+min);*/
 		
     
-		
 	}
 }
