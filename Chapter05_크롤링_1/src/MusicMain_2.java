@@ -48,35 +48,35 @@ class MelonMusic
 	{
 		try
 		{
-//			int k=1;
-//		    for(int i=50;i<=100;i+=50)
-//		    {
-//		      Document doc=Jsoup.connect("https://www.melon.com/chart/index.htm").get();
-//			  Elements title=doc.select("tr.lst"+i+" div.wrap div.rank01 a");
-//			  Elements singer=doc.select("tr.lst"+i+" div.wrap div.rank02 a");
-//			  Elements album=doc.select("tr.lst"+i+" div.wrap div.rank03 a");
-//			  Elements poster=doc.select("div.wrap a.image_typeAll img");
-//			  for(int j=0;j<title.size();j++)
-//			  {
-//				  System.out.println("순위:"+(k));
-//				  System.out.println("노래명:"+title.get(j).text());
-//				  System.out.println("가수명:"+singer.get(j).text());
-//				  System.out.println("앨범:"+album.get(j).text());
-//				  System.out.println("이미지:"+poster.get(j).attr("src"));
-//				  //System.out.println("동영상 키:"+youtubeData(title.get(j).text()));
-//				  System.out.println("===================================================");
-//				  FileWriter fw=
-//						  new FileWriter("c:\\javaDev\\melon.txt",true);//append
-//				  String data=(j+1)+"|"
-//						     +title.get(j).text()+"|"
-//						     +singer.get(j).text()+"|"
-//						     +album.get(j).text()+"|"
-//						     +poster.get(j).attr("src")+"\r\n";
-//				  fw.write(data);
-//				  fw.close();
-//				  k++;
-//			  }
-//		    }
+			int k=1;
+		    for(int i=50;i<=100;i+=50)
+		    {
+		      Document doc=Jsoup.connect("https://www.melon.com/chart/index.htm").get();
+			  Elements title=doc.select("tr.lst"+i+" div.wrap div.rank01 a");
+			  Elements singer=doc.select("tr.lst"+i+" div.wrap div.rank02 a");
+			  Elements album=doc.select("tr.lst"+i+" div.wrap div.rank03 a");
+			  Elements poster=doc.select("div.wrap a.image_typeAll img");
+			  for(int j=0;j<title.size();j++)
+			  {
+				  System.out.println("순위:"+(k));
+				  System.out.println("노래명:"+title.get(j).text());
+				  System.out.println("가수명:"+singer.get(j).text());
+				  System.out.println("앨범:"+album.get(j).text());
+				  System.out.println("이미지:"+poster.get(j).attr("src"));
+				  //System.out.println("동영상 키:"+youtubeData(title.get(j).text()));
+				  System.out.println("===================================================");
+				  FileWriter fw=
+						  new FileWriter("c:\\javaDev\\melon.txt",true);//append
+				  String data=(j+1)+"|"
+						     +title.get(j).text()+"|"
+						     +singer.get(j).text()+"|"
+						     +album.get(j).text()+"|"
+						     +poster.get(j).attr("src")+"\r\n";
+				  fw.write(data);
+				  fw.close();
+				  k++;
+			  }
+		    }
 		  // 파일에서 데이터 읽기
 		  FileReader fr=new FileReader("c:\\javaDev\\melon.txt");
 		  int i=0;
@@ -181,7 +181,7 @@ class MelonMusic
  *       
  *     
  */
-public class MusicMain2 {
+public class MusicMain_2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
