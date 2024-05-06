@@ -22,8 +22,7 @@
  *  
  *  1) 단항연산자 / 산술연산자 / 비교연산자/ 대입연산자 / 논리연산자 / 형변환
  *    프로그램 - 변수/연산자/제어문 ==> 묶음
- *  2) 
- *  
+ * 
  */
 public class 연산자_비교연산자 {
 
@@ -50,7 +49,6 @@ public class 연산자_비교연산자 {
 		
   //char d = (char)((int)(Math.random()*26)+65);// 알파벳 대문자 범위
 		
-		
 	char c = (char)((int)(Math.random()*26)+97); // 알파벳 소문자 범위 
 	char d = (char)((int)(Math.random()*26)+97);
 		System.out.println("c="+c+", d="+d);
@@ -60,7 +58,5 @@ public class 연산자_비교연산자 {
 		System.out.println("c<=d:"+(c<=d)); 
 		System.out.println("c>=d:"+(c>=d));
 		
-		
 	}
-
 }
