@@ -16,7 +16,7 @@ public class 문제_7 {
         	if(num%2==0)
         		even++;
         }
-        System.out.println("갯수:"+even);
+        System.out.println("개수:"+even);
 	}
 
 }
