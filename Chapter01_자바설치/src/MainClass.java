@@ -119,10 +119,8 @@ public class MainClass {
         System.out.println((int)'A');
         System.out.println(Integer.toBinaryString(65));
         System.out.println("홍");
-        System.out.println(Integer.toBinaryString());
-		
-		
-		
+        System.out.println(Integer.toBinaryString(54861));
+			
 	}
 
 }
