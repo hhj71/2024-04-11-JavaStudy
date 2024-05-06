@@ -21,8 +21,8 @@ public class 문제__12 {
         		min=num;
         }
         System.out.println();
-        System.out.println("최대값:"+max);
-        System.out.println("최소값:"+min);
+        System.out.println("최댓값:"+max);
+        System.out.println("최솟값:"+min);
         
         System.out.println("======= while ======");
         int i=1;
@@ -40,8 +40,8 @@ public class 문제__12 {
         	i++;
         }
         System.out.println();
-        System.out.println("최대값:"+max);
-        System.out.println("최소값:"+min);
+        System.out.println("최댓값:"+max);
+        System.out.println("최솟값:"+min);
         
         System.out.println("======= do~while ======");
         i=1;
