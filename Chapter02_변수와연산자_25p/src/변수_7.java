@@ -17,7 +17,7 @@ public class 변수_7 {
 		int b=200;
 		int temp = a;// 임시 저장
 		a=b; // a=200
-		b=temp; // b=100
+		b=temp; // b=100 // b=a 라고 하면 b=>200이 된다.
 		System.out.println("a="+a);
 		System.out.println("b="+b);
 		

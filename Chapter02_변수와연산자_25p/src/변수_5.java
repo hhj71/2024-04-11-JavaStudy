@@ -17,8 +17,6 @@
  *           
  */
 
-
-
 public class 변수_5 {
 
 	public static void main(String[] args) {
@@ -33,9 +31,9 @@ public class 변수_5 {
 		
 		byte b1=10;
 		byte b2=110;
-		byte b3=b1+b2; // 오류 발생 -> byte + byte = int // int 이하는 다 더하면 int가 나옴... ex) byte+byte, char+char..// int랑 크기 큰거랑 더하면 크기 큰걸로 데이터형 정해짐.
-		
-		
+		// byte b3=b1+b2; // 오류 발생 -> byte + byte = int // int 이하는 다 더하면 int가 나옴... ex) byte+byte, char+char..// int랑 크기 큰거랑 더하면 크기 큰걸로 데이터형 정해짐.
+		byte b3=(byte)(b1+b2);
+		System.out.println(b3);
 	}
 
 }
