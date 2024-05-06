@@ -28,7 +28,7 @@ public class 자바제어문_반복문_6 {
 				System.out.println("잘못된 입력입니다.");
 				continue;
 			}
-			break;
+			break; // for종료 => 정상 입력을 했을 경우
 			/* if(dan>=2 && dan<=9)
 				break;
 			else 
