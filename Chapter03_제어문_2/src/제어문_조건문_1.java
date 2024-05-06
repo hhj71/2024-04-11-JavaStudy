@@ -52,10 +52,7 @@ public class 제어문_조건문_1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		
-		
-		
+        // 1~10000 사이의 짝수 구하기
 		/*for (int i=1; i<=10000; i++)
 		{
 			if(i%2==0)
