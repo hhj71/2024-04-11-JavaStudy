@@ -3,7 +3,7 @@
  *  뺄셈과 곱셈 연산의 결과를 출력하는 프로그램을 작성
  */
 import java.util.Scanner;
-public class 연산자문제11 {
+public class 연산자문제__11 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

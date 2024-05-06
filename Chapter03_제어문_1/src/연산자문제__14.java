@@ -3,7 +3,7 @@
  * 첫째 수를 둘째 수로 나눈 나머지를 
  * 출력하는 프로그램을 작성해 보자.
  */
-public class 연산자문제14 {
+public class 연산자문제__14 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

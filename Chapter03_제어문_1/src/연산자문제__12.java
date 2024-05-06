@@ -5,7 +5,7 @@
  * 1 * 2 + 3의 계산 결과를 출력해야 한다. 단 출력 양식은 다음과 같아야 한다.
  */
 import java.util.Scanner;
-public class 연산자문제12 {
+public class 연산자문제__12 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

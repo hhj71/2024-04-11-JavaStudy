@@ -1,5 +1,5 @@
 
-public class 연산자문제10 {
+public class 연산자문제__10 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
