@@ -49,18 +49,18 @@ public class 클래스_3 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-			//1. 학생 생성
+	    //1. 학생 생성
 		// hong 이라는 메모리 주소 안에 name, subject, school_name, year, hakbun 데이터가 들어있음 => .을 이용해서 접근
 		Student hong = new Student();
-		                   // 생성자 => 리턴형이 없다 / 클래스명과 동일 => 외부에서 데이터 읽어서 변수에 대입
-	// 							사용자로부터 입력값을 받아서 초기화
-	// 							시작과 동시에 연결 => 서버 구동, 화면 UI, 데이터베이스 연동
-	//                          생략이 가능 -> 자동으로 컴파일러가 추가	
+		//                  생성자 => 리턴형이 없다 / 클래스명과 동일 => 외부에서 데이터 읽어서 변수에 대입
+	    // 					        사용자로부터 입력값을 받아서 초기화
+	    // 							시작과 동시에 연결 => 서버 구동, 화면 UI, 데이터베이스 연동
+	    //                          생략이 가능 -> 자동으로 컴파일러가 추가	
 		System.out.println("이름:"+hong.name);
 		System.out.println("학년:"+hong.year);
 		System.out.println("학과:"+hong.subject);
 		
-	     // 2. 학생 생성
+	    // 2. 학생 생성
 		// shim 이라는 메모리 주소 안에 name, subject, school_name, year, hakbun 데이터가 들어있음 => .을 이용해서 접근
 		Student shim = new Student(); 
 		// 변경
@@ -79,6 +79,7 @@ public class 클래스_3 {
 		park.year=1;
 		System.out.println("이름:"+park.name);
 		System.out.println("학년:"+park.year);
+		
 		System.out.println("학과:"+park.subject);
 	}
 
