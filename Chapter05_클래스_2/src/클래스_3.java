@@ -79,7 +79,6 @@ public class 클래스_3 {
 		park.year=1;
 		System.out.println("이름:"+park.name);
 		System.out.println("학년:"+park.year);
-		
 		System.out.println("학과:"+park.subject);
 	}
 
