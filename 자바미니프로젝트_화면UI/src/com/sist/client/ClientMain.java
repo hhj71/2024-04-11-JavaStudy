@@ -16,6 +16,7 @@ public class ClientMain extends JFrame implements ActionListener{
 		add(mp);
 		cp.setBounds(0, 50, 800, 530);
 		add(cp);
+		
 		//add("North",mp);
 		//add("Center",cp);
 		// 윈도우 크기
@@ -27,6 +28,7 @@ public class ClientMain extends JFrame implements ActionListener{
 		mp.b1.addActionListener(this);// b1 버튼을 클릭하면 => actionPerformed를 호출해라
 		mp.b2.addActionListener(this);
 		mp.b6.addActionListener(this);
+		mp.b4.addActionListener(this);
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -48,6 +50,10 @@ public class ClientMain extends JFrame implements ActionListener{
 		else if(mp.b2==e.getSource())// 메뉴 2번 버튼 눌렀을 때
 		{
 			cp.card.show(cp, "FIND");
+		}
+		else if(mp.b4==e.getSource())// 메뉴 4번 버튼 눌렀을 때
+		{
+			cp.card.show(bp, "BOARD");
 		}
 		else if(mp.b6==e.getSource())// 메뉴 6번 버튼 눌렀을 때
 		{
