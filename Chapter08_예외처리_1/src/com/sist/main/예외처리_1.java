@@ -68,7 +68,7 @@ package com.sist.main;
  *                     -------------------------------------
  *                      => javax.http.servlet. => 웹 관련 => JSP
  *                                                        
- *                                                        3버전 => 4,6버전 출시
+ *                                                        3버전 => 4,5버전 출시
  *                                                        ------------
  *            => Front-End : 자바스크립트 중심 (JavaScript => Jquery, Ajax, NodeJS, VueJS, ReactJS) 
  *                                          ----------                          --------------
@@ -79,7 +79,7 @@ package com.sist.main;
  *            => 우리과정 : Back-End
  *            	
  *            	 CheckedException
- *               ---------------- 반드시 예외처리를 해서 사숑한다 (컴파일시에 예외처리가 되어 있는지 확인)
+ *               ---------------- 반드시 예외처리를 해서 사용한다 (컴파일시에 예외처리가 되어 있는지 확인)
  *                       |
  *                 FileNotException
  *                 IOException
@@ -89,9 +89,12 @@ package com.sist.main;
  *                 URLMalformedException
  *                 ---------------------- URL (network)
  *                 ClassNotFoundException
- *                   class.forName() => 클래스명으로 메모리 할당
- *                 --------------------- 
- *                   
+ *                   Class.forName() => 클래스명으로 메모리 할당
+ *                 --------------------- 리플렉션
+ *                   InterrupedException
+ *                   Thread.sleep() => 충돌
+ *                    => 쓰레드는 프로그램안에서 여러개의 프로그램을 동시에 실행 
+ *                 ---------------------- 쓰레드 관련   
  *                                              
  *               unCheckException : 필요시에만 예외처리를 한다 => 예외처리를 생략할 수 있다 
  *               				    => 지금까지 사용한 클래스들 다 이 방법 사용한 것...  
@@ -103,6 +106,24 @@ package com.sist.main;
  *                  NullPointerException => 메모리 할당이 없는 상태에서 객체 사용시 ....
  *                  --------------------- String, 윈도우 관련
  *                                        ------ 멤버변수 선언시 => 자동초기화 => null, 크롤링 => 데이터가 없는 경우                            
+ *                         
+ *        예외처리 상속도 
+ *        ----------
+ *           Object : 최상위 클래스 
+ *             |
+ *         Throwable
+ *             |
+ *       ---------------------
+ *       |                   |
+ *     Error             Exception
+ *                           |
+ *            -----------------------------------
+ *            | 필수                             | 선택 
+ *         IOExcetion                      RuntimeException : 실행시 에러 => 필요시에는 예외처리한다 
+ *         SQLException                         |
+ *         => 반드시 예외처리                     ArrayIndexOutOfBoundsException
+ *                                            ClassCastException                           
+ *     
  *                                              
  *  			*** 프로그램 제작
  *  				1. 설계 => 벤치마킹 (웹, 게임, ...) => 모방 => 새로운 내용을 만든다
@@ -141,8 +162,39 @@ package com.sist.main;
  *                               {
  *                               } catch (NumberFormatException) 
  *                               {
- *                               } catch (ArithmeticException)             
- *                                                                      
+ *                               } catch (ArithmeticException) 
+ *                               {
+ *                               }  
+ *                 				 
+ *                 				 try
+ *                  			 {
+ *                      			배열을 선언 
+ *                      			정수 입력 
+ *                      			나누기 
+ *                      			=========> 평상시에 코딩 => 실행 가능한 프로그램을 서술 
+ *                  			 }catch(RuntimeException) => 다중 조건 
+ *                  			 {
+ *                  			 }                         
+ *                               try
+ *                  			 {
+ *                      			배열을 선언 
+ *                      			정수 입력 
+ *                      			나누기 
+ *                      			=========> 평상시에 코딩 => 실행 가능한 프로그램을 서술 
+ *                  			 }catch(Exception) => 다중 조건 
+ *                  			 {
+ *                  			 }
+ *                               try
+ *                  			 {
+ *                      			배열을 선언 
+ *                      			정수 입력 
+ *                      			나누기 
+ *                      			=========> 평상시에 코딩 => 실행 가능한 프로그램을 서술 
+ *                  			 }catch(Throwable) => 다중 조건 
+ *                  			 {
+ *                  			 }     
+ *                  ** 상속도의 위로 올라갈수록 예외처리 기능을 많이 가지고 있다
+ *                  					- 아래 예외처리클래스의 예외처리 기능을 포함한다                     
  *                                                                      
  *        - 예외처리의 형식
  *        	------ 에러가 발생시에 건너뛰는 역할
@@ -179,16 +231,27 @@ package com.sist.main;
  *                   ==> 1,2,6,7,8  종료
  *                   
  *                  try 절 : 정상수행이 가능한 소스 코딩을 하는 부분 => 모든 프로그램 소스가 서술 ==> 1개만 설정
- *                  catch 절 : try 수행중에 에러가 발생하면 처리 , 복구
+ *                  catch 절 : try 수행중에 에러가 발생하면 처리 => 복구
  *                 				=> 여러개 사용이 가능
- *                 				=> 예러 발생시 1게                                                     
- *                                                                      
- *                                                                      
- *                                                                      
- *                                                                      
- *                                                                      
- *                                                                      
- *                                                                      
+ *                 				=> 에러 발생시 1개의 catch만 수행 => 다중 조건문과 비슷                                                     
+ *                                 ----------------------- 찾아서 처리하는 역할 => JVM                                    
+ *                              ==> 소스 전체를 예외처리 
+ *         							try
+ *         							{
+ *             							모든 소스 
+ *         							}catch()
+ *         							{
+ *         							}
+ *         						    ==> 예상되는 부분만 예외처리가 가능 
+ *         							문장 
+ *         							문장 
+ *         							try
+ *         							{
+ *            							문장 => 자주 에러가 발생하는 부분 
+ *         							}catch(Exception)
+ *         							{
+ *         							}                                      
+ *                                                                       
  */
 class A
 {
@@ -199,7 +262,8 @@ class B extends A
 	
 }
 public class 예외처리_1 {
-//	String name; // null
+//	String name; // null => 모든 클래스는 null 값으로 초기화된다
+	// null은 데이터가 없는 상태 (주소가 없는 상태) => 클래스에서만 발생한다
 //	public void display()
 //	{
 //		name = name.substring(0,1); // name이 null이기 때문에 자를 수 없음
@@ -215,7 +279,8 @@ public class 예외처리_1 {
 //		=> 메소드가 A가 가지고 있는 메소드 호출
 //		B b = (B)a;
 //		System.out.println(10/0);
-		
+//		예외처리_1 a=new 예외처리_1();
+//		a.display();
 		
 	}
 

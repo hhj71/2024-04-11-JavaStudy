@@ -43,7 +43,38 @@ package com.sist.main;
  *            = throws => 라이브러리에 주로 사용된다
  *            
  *            => 286 page
- *            		try ~ catch
+ *            		try ~ catch의 형식
+ *            
+ *              try
+ *           {
+ *               // 정상 수행 => 에러가 의심되는 소스 
+ *           }catch(예외처리 클래스)
+ *           {
+ *               // 에러가 발생시 처리 => 가벼운 에러 (소스에서 수정이 가능한 에러) => 에러(예외처리에서 처리가 불가능)
+ *               에러 : 소스상에서나 수정이 불가능한 에러
+ *                     브라우저에 문제 , 메모리 부족 , 이클립스 오류 
+ *               예외처리 : => 소스상에서 수정이 가능(잡을 수 있는 가벼운 에러) 
+ *                       파일명 오류 , IP오류 , 매개변수 값 전송 오류 ...
+ *           }
+ *           
+ *           try => 전체사용 , 부분적인 사용이 가능 
+ *           
+ *           .....
+ *           .....
+ *           try
+ *           {
+ *           }catch(){} => 의심되는 영역 처리 
+ *           .....
+ *           .....
+ *           
+ *           try ==> 전체적으로 처리 
+ *           {
+ *              .....
+ *              .....
+ *              .....
+ *              .....
+ *           }catch(){}
+ *         
  */
 public class 예외처리_5 {
 
@@ -54,19 +85,30 @@ public class 예외처리_5 {
 				for (int i=1; i<=10;i++)
 				{
 					int n =(int)(Math.random()*3); // 0,1,2
-					System.out.println(i/n); // 오류가 발생하면 => for 종료하고 => catch를 잦는다
+					System.out.println(i/n); // 오류가 발생하면 => for 종료하고 => catch를 찾는다
 				}
 			}catch (Exception e)
 			{
-				
+				System.out.println("오류 발생:"+e.getMessage());
+	        	// 어떤 오류가 발생했는지 확인 : getMessage()
 			}
-			//
 			/*
 			 *   for 안에 => 예외처리
 			 *   -----------------
 			 *   크롤링 => 모든 HTML이 동일하지 않다 => 스킵
 			 */
-			
+			for(int i=1;i<=10;i++)
+			{
+				try
+				{
+					int n=(int)(Math.random()*3);
+					System.out.println(i/n);// => catch수행 => for 증가식으로 이동 
+				}catch(Exception ex)
+				{
+					System.out.println("오류 발생:"+ex.getMessage());
+				}
+				// 의심되는 영역 
+			}
 			
 			
 			

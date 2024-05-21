@@ -43,7 +43,7 @@ package com.sist.main;
  *    		= extends Object
  *    		= 실행시 파일 => 예외처리 생략이 가능    
  *         --------------------------------------------------------
- *         = interface ** 접근지정어 => public만 가능
+ *         = interface ** 접근지정어 => public만 사용 가능
  *         		=> 상수
  *         		=> 추상메소드
  *              => default
@@ -51,13 +51,20 @@ package com.sist.main;
  *             
  *              interface A
  *              { 
- *             
- *            
+ *                (public static final) int a=10;
+ *                => (public) static fianl int A=100;
+ *                
+ *                (public abstract) void disp();
+ *                =>  public (abstract) void disp();
+ *                
+ *                (public) default void aaa(){}
+ *               }
+ 
  */
-interface ABC
-{
-	
-}
+//interface ABC
+//{
+//	
+//}
 public class 예외처리_9 {
 
 	public static void main(String[] args) {

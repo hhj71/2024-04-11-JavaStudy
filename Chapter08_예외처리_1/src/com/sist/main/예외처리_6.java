@@ -13,8 +13,13 @@ package com.sist.main;
  		   		    --------------------------------------- 통과 안되면 (위약금 / 다시 개발)
  		   		    														  -------
  		        => 방지하기 위해서 신입사원 교육이 타이트하다                           급여가 없다
- 		        -> 신입사원 교육 => Spring											 
- * 
+ 		        -> 신입사원 교육 => Spring	
+ 		   
+ 		   2) 조건문으로 가능     										 
+ *  	 		예외처리 => 예상되는 에러 도출 
+ *                 		  --------------
+ *                 			catch 1개로 처리 => 경력 
+ *                 			catch => 에러 별로 각각 처리 => 신입  
  * 
  */
 import java.util.*;
@@ -31,6 +36,17 @@ public class 예외처리_6 {
 			}catch(ArrayIndexOutOfBoundsException e)
 			{
 				System.out.println("배열 범위 초과");
-			}
+			}catch(NumberFormatException e)
+	        {
+	        	System.out.println("정수 변환 오류");
+	        }catch(ArithmeticException e)
+	        {
+	        	System.out.println("0으로 나눌 수 없다");
+	        	
+	        }// 반드시 큰 예외처리는 마지막에 처리 ==> 예상을 못한 예외처리하기 위해 사용 
+	        catch(Exception e)
+	        {
+	        	System.out.println("예상하지 못한 에러 발생");
+	        }
 		}
 }

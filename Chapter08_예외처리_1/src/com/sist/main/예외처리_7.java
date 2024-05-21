@@ -53,7 +53,7 @@ public class 예외처리_7 {
 		 // int a = Integer.parseInt(" 10"); // 정수변환 
 //			int[] arr = new int[2];
 //			arr[0]=10;
-//			arr[2]=20; // index 초과
+//			arr[2]=20; // index 초과 => 0,1,2
 //			System.out.println(10/0);
 //			예외처리_7 a = new 예외처리_7();
 //			String s = a.msg.concat("Java"); // 문자열 결합 => + => 오류 발생 (주소가 없음(null))
