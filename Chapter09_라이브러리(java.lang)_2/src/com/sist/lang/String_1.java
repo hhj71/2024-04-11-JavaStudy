@@ -137,7 +137,7 @@ package com.sist.lang;
  *      				<input type = text>
  *      				 "10" => 변경이 가능하게 클래스를 지원 => Wrapper
  *        ★ 14. split() => 구분자별로 문자열을 잘라서 배열에 저장
- *        	     public string[] split(String regex) => 정규식을 이용한다
+ *        	     public String[] split(String regex) => 정규식을 이용한다
  *        ★ 15. trim() => 좌우의 공백 제거
  *        		 public String trim()
  *          ---------------------------------------------------------------------- 자바스크립트와 동일
