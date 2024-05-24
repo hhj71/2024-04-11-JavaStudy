@@ -53,6 +53,8 @@ public class Set_3 {
 //		System.out.println("s1="+s1);
 //		System.out.println("s2="+s2);
 //		메모리 주소가 다름 => 서로 다른 개체 => set이 중복 제거 못함
+		System.out.println("s1="+s1.hashCode());
+	    System.out.println("s2="+s2.hashCode());
 		set.add(s1);
 		set.add(s2);
 		
@@ -60,7 +62,7 @@ public class Set_3 {
 		{
 			System.out.println(ss.getName()+","+ss.getAge());
 		}
-		
+		 // 클래스의 객체를 찾기 
 		String ss="";
 		Object obj = new Object();
 		StringBuffer sb = new StringBuffer();
@@ -68,6 +70,10 @@ public class Set_3 {
 			System.out.println("String 쿨래스는 Object 보다 작다");
 		if (obj instanceof String) // false
 			System.out.println("Object 객체는 String 클래스보다 작다");
+		if(sb instanceof Object)
+	        System.out.println("StringBuffer클래스는 Object작다");
+	  /*if(ss instanceof StringBuffer)
+	        System.out.println("String클래스는 Object작다");*/
 		/*
 		 *            Object
 		 *            	|
@@ -78,7 +84,7 @@ public class Set_3 {
 		 *  
 		 *  - 상속 : 상속을 내리는 클래스 > 상속을 받는 클래스
 		 *          -----------------------------------
-		 *  
+		 *  - 포함 : 포함하고 있는 클래스 > 포함되어 있는 클래스 
 		 *  
 		 */
 	}
