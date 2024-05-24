@@ -14,10 +14,10 @@ import java.text.SimpleDateFormat;
  *  Calendar (추상 클래스) => Date에 없는 기능을 보완
  *  		 			=> 달력 만들기, 일정표 ...
  *  		 			=> 요일, 마지막 날 읽기 ....
- *  					=> 추상클래스 라서 new 사용할 수 없다 ==> Calendar cal = Calendar.getInstance() => 디자인 패턴 => 싱글톤 패턴
+ *  					=> 추상클래스 라서 new 사용할 수 없다 ==> Calendar cal = Calendar.getInstance() => 디자인 패턴 => 싱글턴 패턴
  *  																											 ---------
  *  																											  1개의 객체 주소만 이용
- *  																											  스프링은 싱글톤
+ *  																											  스프링은 싱글턴
  * 
  */
 import java.util.*;
