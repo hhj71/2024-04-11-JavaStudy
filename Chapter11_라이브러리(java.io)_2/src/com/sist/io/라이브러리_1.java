@@ -7,9 +7,19 @@ import java.io.*;
  * 		 => 객체 단위 저장                 
  * 			----------                
  * 			 직렬화                            역직렬화
+ *                                          ----------
+ *                            				  -----
+ *                            			      -----
+ *                           				  -----
+ *                            				  -----
+ *                            				  -----
+ *                          				----------
+ *      ------------------------------
+ *         |    |    |    |     |  ==> 직렬화
+ *      ------------------------------
  * 
- *    ** 이거 쓸 때 implements Serializable 추가해야 한다
  */
+// ** 이거 쓸 때 implements Serializable 추가해야 한다
 class Student implements Serializable
 {
 	private int hakbun;
