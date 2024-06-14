@@ -1,7 +1,7 @@
-package com.sist.client;
+package com.sist.commons;
 import java.awt.*;
 
-import javax.swing.ImageIcon;
+import javax.swing.*;
 public class ImageChange {
 	public static Image getImage(ImageIcon ii,int width, int heigth)
 	{

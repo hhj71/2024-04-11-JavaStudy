@@ -5,6 +5,7 @@ import java.net.URL;
 
 import javax.swing.*;
 
+import com.sist.commons.ImageChange;
 import com.sist.dao.WikiVO;
 
 public class PosterCard extends JPanel{
