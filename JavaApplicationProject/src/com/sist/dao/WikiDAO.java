@@ -76,7 +76,7 @@ public class WikiDAO {
 			while(rs.next())
 			{
 				WikiVO vo = new WikiVO();
-				vo.setISBN(rs.getString(1));
+				vo.setISBN(rs.getLong(1));
 				vo.set도서명(rs.getString(2));
 				vo.set지은이(rs.getString(3));
 				vo.set옮긴이(rs.getString(4));
