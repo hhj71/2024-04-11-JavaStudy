@@ -7,7 +7,7 @@ import com.sist.dao.*;
 public class WikiDAO {
 	private Connection conn;
 	private PreparedStatement ps;
-	private final String URL="jdbc:oracle:thin:@LAPTOP-2F22OMOQ:1521:XE";
+	private final String URL="jdbc:oracle:thin:@localhost:1521:XE";
 	private static WikiDAO dao; // 싱글턴
 	
 	//1. 드라이버 등록
