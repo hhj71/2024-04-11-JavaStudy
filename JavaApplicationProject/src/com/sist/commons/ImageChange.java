@@ -3,9 +3,9 @@ import java.awt.*;
 
 import javax.swing.*;
 public class ImageChange {
-	public static Image getImage(ImageIcon ii,int width, int heigth)
+	public static Image getImage(ImageIcon icon,int width, int heigth)
 	{
-		Image deimg=ii.getImage().getScaledInstance(width, heigth, Image.SCALE_SMOOTH);
+		Image deimg=icon.getImage().getScaledInstance(width, heigth, Image.SCALE_SMOOTH);
 		return deimg;
 	}
 	

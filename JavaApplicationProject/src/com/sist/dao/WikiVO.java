@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 public class WikiVO {
-	private int 가격, 페이지;
+	private int NUM, PRICE, PAGE;
 	private long ISBN;
-	private String 도서명, 지은이, 옮긴이, 시리즈, 표지, 상세보기;
-	private Date 발행일;	
+	private String BOOKNAME, WRITER, TRANSLATOR, SERIES, IMAGE, DETAIL;
+	private Date PUBDATE;	
 }

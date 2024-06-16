@@ -1,10 +1,13 @@
 package com.sist.dao;
 import java.util.*;
 import java.sql.*;
+import com.sist.dao.*;
+
+
 public class WikiDAO {
 	private Connection conn;
 	private PreparedStatement ps;
-	private final String URL="jdbc:oracle:thin:@localhost:1521:XE";
+	private final String URL="jdbc:oracle:thin:@LAPTOP-2F22OMOQ:1521:XE";
 	private static WikiDAO dao; // 싱글턴
 	
 	//1. 드라이버 등록
@@ -13,7 +16,7 @@ public class WikiDAO {
 		try 
 		{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-		}catch(Exception ex) {}
+		}catch(Exception ex) {ex.printStackTrace();}
 	}
 	
 	//2. 오라클 연결
@@ -23,7 +26,7 @@ public class WikiDAO {
 		{
 			conn=DriverManager.getConnection(URL, "hr", "happy");
 			// conn hr/happy
-		}catch(Exception ex) {}
+		}catch(Exception ex) {ex.printStackTrace();}
 	}
 	//3. 오라클 해제
 	public void disConnection()
@@ -32,7 +35,7 @@ public class WikiDAO {
 		{
 			if(ps!=null) ps.close();
 			if(conn!=null) conn.close();
-		}catch(Exception ex) {}
+		}catch(Exception ex) {ex.printStackTrace();}
 	}
 	// 4. 싱글턴 => 한사람당 한개의 DAO만 사용할 수 있게 만든다 -> 메모리 누수현상을 제거
 	public static WikiDAO newInstance()
@@ -49,45 +52,55 @@ public class WikiDAO {
 	// 1. 오라클을 배우는 목적 => 자바에서 사용이 가능 => 2주 
 	/*
 	 * 
- 번호                                               
- ISBN                                          
- 도서명                                            
- 지은이                                         
- 옮긴이                                             
- 페이지                                           
- 가격                                             
- 발행일                                             
- 시리즈                                            
- 종이책                                            
- 표지                                               
- 상세보기
+NUM
+ISBN
+BOOKNAME
+WRITER
+TRANSLATOR
+PAGE
+PRICE
+PUBDATE
+SERIES
+PAPER
+IMAGE
+DETAIL
 	 * 
 	 */
-	public ArrayList<WikiVO> wikiListData()
+	
+	public ArrayList<WikiVO> wikiListData(int page)
 	{
-		ArrayList<WikiVO> list = new ArrayList<WikiVO>();
+		ArrayList<WikiVO> bookList = new ArrayList<WikiVO>();
 		try 
 		{
 			getConnection();
-			String sql = "SELECT ISBN, 도서명, 지은이, 옮긴이, 페이지, 가격, 발행일, 시리즈, 표지, 상세보기 "
-						 + "FROM wiki ";
+			String sql = "SELECT NUM, ISBN, BOOKNAME, WRITER, TRANSLATOR, PAGE, PRICE, PUBDATE, SERIES, IMAGE, DETAIL "
+				     +"FROM wiki WHERE NUM BETWEEN ? AND ? ORDER BY NUM ASC ";
+				     
 			ps=conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
+			
+				int rowSize = 12;
+				int start=(rowSize*page)-(rowSize-1);
+				int end=rowSize*page;
+				   ps.setInt(1, start);
+				   ps.setInt(2, end);
+				ResultSet rs = ps.executeQuery();
+				
 			while(rs.next())
 			{
 				WikiVO vo = new WikiVO();
-				vo.setISBN(rs.getLong(1));
-				vo.set도서명(rs.getString(2));
-				vo.set지은이(rs.getString(3));
-				vo.set옮긴이(rs.getString(4));
-				vo.set페이지(rs.getInt(5));
-				vo.set가격(rs.getInt(6));
-				vo.set발행일(rs.getDate(7));
-				vo.set시리즈(rs.getString(8));
-				vo.set표지(rs.getString(9));
-				vo.set상세보기(rs.getString(10));
+				vo.setNUM(rs.getInt(1));
+				vo.setISBN(rs.getLong(2));
+				vo.setBOOKNAME(rs.getString(3));
+				vo.setWRITER(rs.getString(4));
+				vo.setTRANSLATOR(rs.getString(5));
+				vo.setPAGE(rs.getInt(6));
+				vo.setPRICE(rs.getInt(7));
+				vo.setPUBDATE(rs.getDate(8));
+				vo.setSERIES(rs.getString(9));
+				vo.setIMAGE(rs.getString(10));
+				vo.setDETAIL(rs.getString(11));
 								
-				list.add(vo);
+				bookList.add(vo);
 			}
 		}
 		catch(Exception ex)
@@ -98,6 +111,6 @@ public class WikiDAO {
 		{
 			disConnection();
 		}
-		return list;
+		return bookList;
 	}
 }

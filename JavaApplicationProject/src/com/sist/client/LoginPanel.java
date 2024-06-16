@@ -4,8 +4,8 @@ import java.awt.*;
 public class LoginPanel extends JPanel{
 	Image back;
 	JLabel titleLa, idLa, pwdLa;
-	JTextField tf;
-	JPasswordField pf;
+	JTextField idField;
+	JPasswordField pwField;
 	JButton loginBtn, joinBtn, cancelBtn;
 	
 	public LoginPanel()
@@ -19,8 +19,8 @@ public class LoginPanel extends JPanel{
 		idLa=new JLabel("아이디", JLabel.RIGHT);
 		pwdLa=new JLabel("비밀번호",JLabel.RIGHT);
 		
-		tf = new JTextField();
-		pf = new JPasswordField();
+		idField = new JTextField();
+		pwField = new JPasswordField();
 		
 		loginBtn = new JButton("로그인");
 		joinBtn = new JButton("회원가입");
@@ -32,12 +32,12 @@ public class LoginPanel extends JPanel{
 		add(titleLa);
 
 		idLa.setBounds(230, 300, 80, 30);
-		tf.setBounds(320, 300, 180, 30);
-		add(idLa); add(tf);
+		idField.setBounds(320, 300, 180, 30);
+		add(idLa); add(idField);
 		
 		pwdLa.setBounds(230, 340, 80, 30);
-		pf.setBounds(320, 340, 180, 30);
-		add(pwdLa); add(pf);
+		pwField.setBounds(320, 340, 180, 30);
+		add(pwdLa); add(pwField);
 		
 		loginBtn.setBounds(520, 300, 100, 70);
 		add(loginBtn);

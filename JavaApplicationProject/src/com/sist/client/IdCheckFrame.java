@@ -2,9 +2,9 @@ package com.sist.client;
 import java.awt.*;
 import javax.swing.*;
 public class IdCheckFrame extends JFrame{
-      JLabel la1,la2,la3;
-      JButton b1,b2,b3;
-      JTextField tf;
+      JLabel la1,la2,alert;
+      JButton idFind,ok;
+      JTextField idTf;
       
       public IdCheckFrame()
       {
@@ -18,23 +18,23 @@ public class IdCheckFrame extends JFrame{
     	  la2.setBounds(10, 55, 30, 30);
     	  add(la2);
     	  
-    	  tf=new JTextField();
-    	  tf.setBounds(45, 55, 150, 30);
-    	  add(tf);
+    	  idTf=new JTextField();
+    	  idTf.setBounds(45, 55, 150, 30);
+    	  add(idTf);
     	  
-    	  b1=new JButton("검색");
-    	  b1.setBounds(200, 55, 60, 30);
-    	  add(b1);
+    	  idFind=new JButton("검색");
+    	  idFind.setBounds(200, 55, 60, 30);
+    	  add(idFind);
     	  
-    	  la3=new JLabel("",JLabel.CENTER);
-    	  la3.setForeground(Color.red);
-    	  la3.setBounds(10, 95, 250, 30);
-    	  add(la3);
+    	  alert=new JLabel("",JLabel.CENTER);
+    	  alert.setForeground(Color.red);
+    	  alert.setBounds(10, 95, 250, 30);
+    	  add(alert);
     	  
-    	  b2=new JButton("확인");
-    	  b2.setVisible(false);
+    	  ok=new JButton("확인");
+    	  ok.setVisible(false);
     	  JPanel p=new JPanel();
-    	  p.add(b2);
+    	  p.add(ok);
     	  p.setBounds(10, 135, 250, 35);
     	  add(p);
     	  setSize(290, 220);

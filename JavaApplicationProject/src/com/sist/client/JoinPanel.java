@@ -3,144 +3,145 @@ import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 public class JoinPanel extends JPanel{
-    JLabel tLa,iLa,pLa1,nLa,sLa,bLa,pLa,aLa1,aLa2,telLa,cLa,eLa;
-    JTextField idtf,nametf,birthtf,posttf,addrtf1,addrtf2,teltf,emailtf;
-    JTextArea cta;
-    JButton b1,b2,b3,b4;
-    JRadioButton rb1,rb2;
-    JComboBox box;
-    JPasswordField pf;
-    
+	JLabel title, id, pw, pw2, name, gender, birth, post, addr1, addr2, phone, phoneD1, phoneD2, email, emailAt, content;
+	JTextField idF, nameF, birthF, postF, addr1F, addr2F, phoneF1, phoneF2, phoneF3, emailF;
+	JPasswordField pwF, pw2F;
+	JRadioButton genderM, genderW;
+	JComboBox emailCombo;
+	JTextArea conT;
+	JButton idCheck, postFind, join, cancel;
+	String[] emailList= {"naver.com", "gmail.com", "daum.com"};
     public JoinPanel()
     {
     	setLayout(null);
-    	tLa=new JLabel("회원 가입",JLabel.CENTER);
-    	tLa.setFont(new Font("맑은 고딕",Font.BOLD,35));
-    	tLa.setBounds(10, 15, 930, 40);
-    	add(tLa);
-    	
-    	iLa=new JLabel("아이디",JLabel.RIGHT);
-    	iLa.setBounds(150, 80, 90, 30);
-    	add(iLa);
-    	
-    	idtf=new JTextField();
-    	idtf.setBounds(265, 80, 200, 30);
-    	add(idtf);
-    	idtf.setEnabled(false);
-    	
-    	b1=new JButton("아이디 중복체크");
-    	b1.setBounds(470, 80, 150, 30);
-    	add(b1);
-    	/////////////////////////////////////////////////////////////// id
-    	pLa1=new JLabel("비밀번호",JLabel.RIGHT);
-    	pLa1.setBounds(150, 115, 90, 30);
-    	add(pLa1);
-    	
-    	pf=new JPasswordField();
-    	pf.setBounds(265, 115, 200, 30);
-    	add(pf);
-    	///////////////////////////////////////////////////////////////
-    	nLa=new JLabel("이름",JLabel.RIGHT);
-    	nLa.setBounds(150, 150, 90, 30);
-    	add(nLa);
-    	
-    	nametf=new JTextField();
-    	nametf.setBounds(265, 150, 200, 30);
-    	add(nametf);
-    	////////////////////////////////////////////////////////////////
-    	sLa=new JLabel("성별",JLabel.RIGHT);
-    	sLa.setBounds(150, 185, 90, 30);
-    	add(sLa);
-    	
-    	rb1=new JRadioButton("남자");
-    	rb1.setBounds(265, 185, 70, 30);
-    	add(rb1);
-    	
-    	rb2=new JRadioButton("여자");
-    	rb2.setBounds(340, 185, 70, 30);
-    	add(rb2);
-    	
-    	ButtonGroup bg=new ButtonGroup(); // 라디오 버튼은 그룹으로 묶어야 두개중에 하나만 선택된다
-    	bg.add(rb1); bg.add(rb2);
-    	
-    	rb1.setSelected(true);
-    	/////////////////////////////////////////////////////////////
-    	bLa=new JLabel("생년월일",JLabel.RIGHT);
-    	bLa.setBounds(150, 220, 90, 30);
-    	add(bLa);
-    	
-    	birthtf=new JTextField();
-    	birthtf.setBounds(265, 220, 200, 30);
-    	add(birthtf);
-    	////////////////////////////////////////////////////////////
-    	eLa=new JLabel("이메일",JLabel.RIGHT);
-    	eLa.setBounds(150, 255, 90, 30);
-    	add(eLa);
-    	
-    	emailtf=new JTextField();
-    	emailtf.setBounds(265, 255, 450, 30);
-    	add(emailtf);
-    	////////////////////////////////////////////////////////////
-    	pLa=new JLabel("우편번호",JLabel.RIGHT);
-    	pLa.setBounds(150, 290, 90, 30);
-    	add(pLa);
-    	
-    	posttf=new JTextField();
-    	posttf.setBounds(265, 290, 200, 30);
-    	add(posttf);
-    	
-    	posttf.setEnabled(false);
-    	posttf.setHorizontalAlignment(JLabel.CENTER);
-    	
-    	b2=new JButton("우편번호 검색");
-    	b2.setBounds(470, 290, 150, 30);
-    	add(b2);
-    	////////////////////////////////////////////////////////////
-    	aLa1=new JLabel("주소",JLabel.RIGHT);
-    	aLa1.setBounds(150, 325, 90, 30);
-    	add(aLa1);
-    	
-    	addrtf1=new JTextField();
-    	addrtf1.setBounds(265, 325, 450, 30);
-    	add(addrtf1);
-    	
-    	aLa2=new JLabel("상세주소",JLabel.RIGHT);
-    	aLa2.setBounds(150, 360, 90, 30);
-    	add(aLa2);
-    	
-    	addrtf2=new JTextField();
-    	addrtf2.setBounds(265, 360, 450, 30);
-    	add(addrtf2);
-    	///////////////////////////////////////////////////////////
-    	telLa=new JLabel("전화",JLabel.RIGHT);
-    	telLa.setBounds(150, 395, 90, 30);
-    	add(telLa);
-    	
-    	box=new JComboBox();
-    	box.addItem("010");
-    	box.setBounds(265, 395, 90, 30);
-    	add(box);
-    	
-    	teltf=new JTextField();
-    	teltf.setBounds(370, 395, 200, 30);
-    	add(teltf);
-    	///////////////////////////////////////////////////////////
-    	cLa=new JLabel("소개",JLabel.RIGHT);
-    	cLa.setBounds(150, 430, 90, 30);
-    	add(cLa);
-    	
-    	cta=new JTextArea();
-    	JScrollPane js=new JScrollPane(cta);
-    	js.setBounds(265, 430, 450,170);
-    	add(js);
-    	
-    	b3=new JButton("회원가입");
-    	b4=new JButton("취소");
-    	
-    	JPanel p=new JPanel();
-    	p.add(b3);p.add(b4);
-    	
-    	p.setBounds(150, 610, 565, 35);
-    	add(p);
+    	title=new JLabel("회원가입",JLabel.CENTER);
+		title.setFont(new Font("맑은 고딕",Font.BOLD,35));
+		title.setBounds(10, 40, 940, 40);
+		add(title);
+		
+		id=new JLabel("아이디");
+		idF=new JTextField();
+		idF.setEnabled(false);
+		
+		idCheck=new JButton("아이디 중복체크");
+		id.setBounds(230, 110, 80, 30);
+		idF.setBounds(320, 110, 180, 30);
+		idCheck.setBounds(520, 110, 120, 30);
+		add(id);
+		add(idF);
+		add(idCheck);
+		
+		pw=new JLabel("비밀번호");
+		pwF=new JPasswordField();
+		pw.setBounds(230, 150, 80, 30);
+		pwF.setBounds(320, 150, 180, 30);
+		add(pw);
+		add(pwF);
+		pw2=new JLabel("비밀번호 확인");
+		pw2F=new JPasswordField();
+		pw2.setBounds(230, 190, 80, 30);
+		pw2F.setBounds(320, 190, 180, 30);
+		add(pw2);
+		add(pw2F);
+		
+		name=new JLabel("이름");
+		nameF=new JTextField();
+		name.setBounds(230, 230, 80, 30);
+		nameF.setBounds(320, 230, 180, 30);
+		add(name);
+		add(nameF);
+		
+		gender=new JLabel("성별");
+		genderM=new JRadioButton("남자");
+		genderW=new JRadioButton("여자");
+		gender.setBounds(230, 270, 80, 30);
+		genderM.setBounds(320, 270, 60, 30);
+		genderW.setBounds(400, 270, 60, 30);
+		add(gender);
+		add(genderM);
+		add(genderW);
+		ButtonGroup bg=new ButtonGroup();
+		bg.add(genderM); bg.add(genderW);
+		
+		
+		birth=new JLabel("생년월일");
+		birthF=new JTextField();
+		birth.setBounds(230, 310, 80, 30);
+		birthF.setBounds(320, 310, 180, 30);
+		//datePicker.setBounds(320, 310, 200, 80);
+		add(birth);
+		add(birthF);
+		//add(datePicker);
+		
+		post=new JLabel("우편번호");
+		postF=new JTextField();
+		postFind=new JButton("우편번호 검색");
+		post.setBounds(230, 350, 80, 30);
+		postF.setBounds(320, 350, 180, 30);
+		postFind.setBounds(510, 350, 100, 30);
+		add(post);
+		add(postF);
+		add(postFind);
+		
+		addr1=new JLabel("주소");
+		addr1F=new JTextField();
+		addr1.setBounds(230, 390, 80, 30);
+		addr1F.setBounds(320, 390, 400, 30);
+		add(addr1);
+		add(addr1F);
+		addr2=new JLabel("상세주소");
+		addr2F=new JTextField();
+		addr2.setBounds(230, 430, 80, 30);
+		addr2F.setBounds(320, 430, 400, 30);
+		add(addr2);
+		add(addr2F);
+		
+		phone=new JLabel("전화번호");
+		phoneD1=new JLabel("-");
+		phoneD2=new JLabel("-");
+		phoneF1=new JTextField();
+		phoneF2=new JTextField();
+		phoneF3=new JTextField();
+		phone.setBounds(230, 470, 80, 30);
+		phoneF1.setBounds(320, 470, 80, 30);
+		phoneD1.setBounds(408, 470, 5, 30);
+		phoneF2.setBounds(420, 470, 80, 30);
+		phoneD2.setBounds(508, 470, 5, 30);
+		phoneF3.setBounds(520, 470, 80, 30);
+		add(phone);
+		add(phoneF1);
+		add(phoneD1);
+		add(phoneF2);
+		add(phoneD2);
+		add(phoneF3);
+		
+		email=new JLabel("이메일");
+		emailF=new JTextField();
+		emailAt=new JLabel("@");
+		emailCombo=new JComboBox(emailList);
+		email.setBounds(230, 510, 80, 30);
+		emailF.setBounds(320, 510, 80, 30);
+		emailAt.setBounds(403, 510, 15, 30);
+		emailCombo.setBounds(420, 510, 100, 30);
+		add(email);
+		add(emailF);
+		add(emailAt);
+		add(emailCombo);
+		
+		content=new JLabel("회원가입 경로");
+		conT=new JTextArea();
+		content.setBounds(230, 550, 80, 30);
+		conT.setBounds(320, 550, 400, 100);
+		add(content);
+		add(conT);
+		
+		join=new JButton("가입");
+		cancel=new JButton("취소");
+		JPanel btnP=new JPanel();
+		btnP.add(join);
+		btnP.add(cancel);
+		btnP.setBounds(10, 660, 940, 35);
+		add(btnP);
+
     }
 }
