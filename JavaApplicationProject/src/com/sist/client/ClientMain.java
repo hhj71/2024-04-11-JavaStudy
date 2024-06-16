@@ -59,8 +59,8 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener{
     	idFrm.idFind.addActionListener(this); // 아이디 체크
     	idFrm.ok.addActionListener(this); // 확인
     	
-    	homeP.prev.addActionListener(this); // 홈 도서목록 이전버튼
-    	homeP.next.addActionListener(this); // 홈 도서목록 다음버튼
+    	homeP.prevBtn.addActionListener(this); // 홈 도서목록 이전버튼
+    	homeP.nextBtn.addActionListener(this); // 홈 도서목록 다음버튼
     	
     }
 	public static void main(String[] args) {
@@ -349,20 +349,20 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener{
 				post.setVisible(false);
 			}
 		}
-		
-		if(e.getSource()==homeP.prev)
+		else if(e.getSource()== mainP.ctrP.homeP.prevBtn)
 		{
 			if(curpage>1)
 			{
 				curpage--;
+				mainP.ctrP.homeP.prev();
 			}
 		}
-		else if(e.getSource()==homeP.next)
+		else if(e.getSource()==mainP.ctrP.homeP.nextBtn)
 		{
 			if(curpage<totalpage)
 			{
 				curpage++;
-				
+				mainP.ctrP.homeP.next();
 			}
 		}
 	}
