@@ -2,7 +2,7 @@ package com.sist.client;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
-public class JoinPanel extends JPanel{
+public class JoinPanel extends JFrame{
 	JLabel title, id, pw, pw2, name, gender, birth, post, addr1, addr2, phone, phoneD1, phoneD2, email, emailAt, content;
 	JTextField idF, nameF, birthF, postF, addr1F, addr2F, phoneF1, phoneF2, phoneF3, emailF;
 	JPasswordField pwF, pw2F;
@@ -142,6 +142,8 @@ public class JoinPanel extends JPanel{
 		btnP.add(cancel);
 		btnP.setBounds(10, 660, 940, 35);
 		add(btnP);
+		
+		setSize(960,700);
 
     }
 }

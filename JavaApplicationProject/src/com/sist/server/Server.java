@@ -91,8 +91,8 @@ public class Server implements Runnable {
 			 // s => 클라이언트 
 			 out.write("서버에 접속되었습니다!!\n".getBytes());*/
 			 Client client = new Client(s);
-			 waitVc.add(client);
-			 client.start();
+			 waitVc.add(client);// 정보 저장
+			 client.start(); // 클라이언트와 통신을 시작 ...
 		}
 		}catch(Exception ex) {}
 		

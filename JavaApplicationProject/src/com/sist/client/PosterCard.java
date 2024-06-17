@@ -16,7 +16,7 @@ public class PosterCard extends JPanel{
 	public PosterCard(WikiVO vo)
 	{
 		setLayout(null);
-		poLa.setBounds(10, 5, 100, 140);
+		poLa.setBounds(10, 5, 110, 140);
 		tLa.setBounds(15, 160, 130, 15); 
 		tLa.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
 		
@@ -30,7 +30,7 @@ public class PosterCard extends JPanel{
 			     URL url=new URL(
 					   vo.getIMAGE());
 			     Image image=ImageChange.getImage(new ImageIcon(url),
-					   100, 140);
+					   110, 140);
 			     poLa.setIcon(new ImageIcon(image));
 			     
 			   }
@@ -38,7 +38,7 @@ public class PosterCard extends JPanel{
 			   {
 				     Image image=ImageChange.getImage(
 				    		 new ImageIcon(vo.getIMAGE()),
-						   100, 140);
+						   110, 140);
 				     
 				     poLa.setIcon(new ImageIcon(image)); 
 			   }

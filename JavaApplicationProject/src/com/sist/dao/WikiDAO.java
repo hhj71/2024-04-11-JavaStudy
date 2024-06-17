@@ -7,7 +7,7 @@ import com.sist.dao.*;
 public class WikiDAO {
 	private Connection conn;
 	private PreparedStatement ps;
-	private final String URL="jdbc:oracle:thin:@localhost:1521:XE";
+	private final String URL="jdbc:oracle:thin:@192.168.10.124:1521:XE";
 	private static WikiDAO dao; // 싱글턴
 	
 	//1. 드라이버 등록
@@ -24,7 +24,7 @@ public class WikiDAO {
 	{
 		try 
 		{
-			conn=DriverManager.getConnection(URL, "hr", "happy");
+			conn=DriverManager.getConnection(URL, "hr2", "happy");
 			// conn hr/happy
 		}catch(Exception ex) {ex.printStackTrace();}
 	}

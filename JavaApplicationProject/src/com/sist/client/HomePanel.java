@@ -1,11 +1,7 @@
 package com.sist.client;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.table.*;
 
 import com.sist.dao.*;
@@ -81,7 +77,6 @@ public class HomePanel extends JPanel {
 			// 데이터 첨부
 		public void cardPrint(ArrayList<WikiVO> bookList)
 		{
-			
 			int i=0;
 			for(WikiVO vo:bookList)
 			{

@@ -123,7 +123,7 @@ public class Client extends JFrame implements ActionListener, Runnable{
 			{
 				String msg = tf1.getText();
 				if(msg.length()<1) return;
-				
+				// 입력이 된상태 => 서버로 문자열 전송 
 				out.write(("["+name+"] "+msg+"\n").getBytes());
 				tf1.setText("");
 				tf1.requestFocus();
