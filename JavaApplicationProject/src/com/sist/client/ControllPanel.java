@@ -7,14 +7,21 @@ import javax.swing.JPanel;
 public class ControllPanel extends JPanel{
 	CardLayout card = new CardLayout();
 //	EmpListPanel ep=new EmpListPanel();
-	HomePanel homeP = new HomePanel();
+	HomePanel homeP;
+	DetailPanel detailP;
+	FindPanel findP;
 	ChatPanel chatP = new ChatPanel();
 	public ControllPanel()
 	{
 		setLayout(card);
-		add("CHAT",chatP);
-//		 add("EP",ep);
+//		add("EP",ep);
+		homeP=new HomePanel(this);
+		detailP = new DetailPanel(this);
+		findP = new FindPanel(this);
 		add("HOME",homeP);
+		add("CHAT",chatP);
+		add("DETAIL",detailP);
+		add("FIND", findP);
 		
 	}
 }

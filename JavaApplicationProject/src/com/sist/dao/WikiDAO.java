@@ -66,21 +66,56 @@ IMAGE
 DETAIL
 	 * 
 	 */
-	
+	public int wikiTotalPage()
+	{
+		int total = 0;
+		try 
+		{
+			//1.연결
+			getConnection();
+			//2. SQL문장
+			String sql = "SELECT CEIL(COUNT(*)/12.0) FROM wiki";
+			// 3. 오라클로 전송
+			ps = conn.prepareStatement(sql);
+			// 4. SQL 문장 실행 결과를 가지고 온다 => 실행 결과를 저장 (ResultSet)
+			ResultSet rs = ps.executeQuery();
+			// 5. 커서 위치를 데이터에 출력된 첫번째 위치로 이동
+			rs.next();
+			total = rs.getInt(1);
+			// 6. 메모리를 닫는다
+			rs.close();
+			
+			// 쉬운 프로그램은 모든 개발자가 동일한 코딩하는 프로그램 (표준화) => 패턴이 한개
+			// ---------- 라이브러리 (MyBatis) => Spring 
+			
+		}catch(Exception ex)
+		{
+			// 에러 확인 => 복구(X)
+			ex.printStackTrace();
+		}
+		finally
+		{
+			// 닫기
+			disConnection();
+		}
+		return total;
+	}
 	public ArrayList<WikiVO> wikiListData(int page)
 	{
-		ArrayList<WikiVO> bookList = new ArrayList<WikiVO>();
+		ArrayList<WikiVO> list = new ArrayList<WikiVO>();
 		try 
 		{
 			getConnection();
-			String sql = "SELECT NUM, ISBN, BOOKNAME, WRITER, TRANSLATOR, PAGE, PRICE, PUBDATE, SERIES, IMAGE, DETAIL "
-				     +"FROM wiki WHERE NUM BETWEEN ? AND ? ORDER BY NUM ASC ";
-				     
-			ps=conn.prepareStatement(sql);
-			
+			String sql = "SELECT NUM, ISBN, BOOKNAME, WRITER, TRANSLATOR, PAGE, PRICE, PUBDATE, SERIES, IMAGE, DETAIL, rnum "
+					+ "FROM(SELECT NUM, ISBN, BOOKNAME, WRITER, TRANSLATOR, PAGE, PRICE, PUBDATE, SERIES, IMAGE, DETAIL, rownum as rnum "
+					 + "FROM(SELECT NUM, ISBN, BOOKNAME, WRITER, TRANSLATOR, PAGE, PRICE, PUBDATE, SERIES, IMAGE, DETAIL "
+					 + "FROM wiki ORDER BY NUM ASC)) "
+					 + "WHERE rnum BETWEEN ? AND ?";
+				     			
 				int rowSize = 12;
 				int start=(rowSize*page)-(rowSize-1);
 				int end=rowSize*page;
+				ps=conn.prepareStatement(sql);
 				   ps.setInt(1, start);
 				   ps.setInt(2, end);
 				ResultSet rs = ps.executeQuery();
@@ -100,7 +135,7 @@ DETAIL
 				vo.setIMAGE(rs.getString(10));
 				vo.setDETAIL(rs.getString(11));
 								
-				bookList.add(vo);
+				list.add(vo);
 			}
 		}
 		catch(Exception ex)
@@ -111,6 +146,95 @@ DETAIL
 		{
 			disConnection();
 		}
-		return bookList;
+		return list;
 	}
+	
+	public WikiVO bookDetailData(int NUM)
+    {
+   	 WikiVO vo=new WikiVO();
+   	 try
+   	 {
+   		 getConnection();
+ 
+   		 String sql="SELECT NUM, ISBN, BOOKNAME, WRITER, TRANSLATOR, PAGE, PRICE, PUBDATE, SERIES, IMAGE "
+   		    +"FROM wiki "
+   		    +"WHERE NUM=?";
+   		 
+   		 ps=conn.prepareStatement(sql);
+   		 // ?에 값을 채운다 
+   		 ps.setInt(1, NUM);
+   		 
+   		 // 결과값 
+   		 ResultSet rs=ps.executeQuery();
+   		 rs.next();
+   		 // 값을 VO에 저장 
+   		vo.setNUM(rs.getInt(1));
+		vo.setISBN(rs.getLong(2));
+		vo.setBOOKNAME(rs.getString(3));
+		vo.setWRITER(rs.getString(4));
+		vo.setTRANSLATOR(rs.getString(5));
+		vo.setPAGE(rs.getInt(6));
+		vo.setPRICE(rs.getInt(7));
+		vo.setPUBDATE(rs.getDate(8));
+		vo.setSERIES(rs.getString(9));
+		vo.setIMAGE(rs.getString(10));
+				
+   		rs.close();
+
+   		 
+   	 }catch(Exception ex)
+   	 {
+   		 ex.printStackTrace();
+   	 }
+   	 finally
+   	 {
+   		 disConnection();
+   	 }
+   	 return vo;
+    }
+    // 검색 => LIKE 
+ public ArrayList<WikiVO> wikiFindData(String name)
+ {
+	  ArrayList<WikiVO> list = new ArrayList<WikiVO>();
+	  try
+	  {
+		  getConnection();
+		  String sql="SElECT NUM, BOOKNAME, IMAGE, PRICE "
+				  +"FROM wiki "
+				  +"WHERE BOOKNAME LIKE '%'||?||'%' "
+				  +"ORDER BY NUM ASC";
+		  ps=conn.prepareStatement(sql);
+		  ps.setString(1, name);
+		  
+		  ResultSet rs = ps.executeQuery();
+		  while(rs.next())
+			{
+			  WikiVO vo = new WikiVO();
+				vo.setNUM(rs.getInt(1));
+				vo.setBOOKNAME(rs.getString(2));
+				vo.setIMAGE(rs.getString(3));
+				vo.setPRICE(rs.getInt(4));
+				
+				list.add(vo);
+			}
+		  
+	  }catch(Exception ex)
+	  {
+		  ex.printStackTrace();
+	  }finally
+	  {
+		  disConnection();
+	  }
+	  return list;
+ }
+    // 구매 => INSERT , UPDATE , DELETE 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -5,11 +5,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.*;
 import com.sist.dao.*;
-import com.sist.client.HomePanel;
 import com.sist.commons.Function;
 
 // 네트워크 연결
@@ -25,16 +23,12 @@ import java.util.*;
 public class ClientMain extends JFrame implements ActionListener, MouseListener,Runnable{
     CardLayout card=new CardLayout();
     LoginPanel loginP=new LoginPanel();
-//    MainPanel mainP=new MainPanel();
     JoinPanel joinP=new JoinPanel();
     PostFindFrame post=new PostFindFrame();// 우편번호 검색 
     IdCheckFrame idFrm=new IdCheckFrame();
-    HomePanel homeP = new HomePanel();
     ControllPanel ctrP = new ControllPanel();
-//    ChatPanel chatP = new ChatPanel();
     MenuPanel menuP = new MenuPanel();
-//    int curpage=1;
-//    int totalpage=48;
+    
     // 네트워크에 필요한 객체
      Socket s;  // => 통신기기 => 핸드폰
      OutputStream out; // 서버로 전송
@@ -53,17 +47,11 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
     	setLayout(null);
     	menuP.setBounds(100, 20, 800, 45);
    	 	add(menuP);
-   	    ctrP.setBounds(10, 75, 930, 700);
+   	    ctrP.setBounds(10, 75, 930, 680);
 	 	add(ctrP);
    	 	
-//    	add("LOGIN",loginP);
-//    	add("JOIN",joinP);
-//    	add("MAIN",mainP);
-//    	add("CHAT",chatP);
-
     	setSize(960, 780);
     	setResizable(false);
-//    	setVisible(true);
     	setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); //윈도우 창 우측상단 X버튼으로 종료금지
     	//setDefaultCloseOperation(EXIT_ON_CLOSE);
     
@@ -91,9 +79,6 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
     	idFrm.idFind.addActionListener(this); // 아이디 체크
     	idFrm.ok.addActionListener(this); // 확인
     	
-    	ctrP.homeP.prevBtn.addMouseListener(this); // 홈 도서목록 이전버튼
-    	ctrP.homeP.nextBtn.addMouseListener(this); // 홈 도서목록 다음버튼
-    	
     	menuP.exitBtn.addActionListener(this);
     	menuP.chatBtn.addActionListener(this);
     	menuP.homeBtn.addActionListener(this);
@@ -115,6 +100,10 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 		{
 			dispose();// window메모리 해제 
 			System.exit(0);// 프로그램 종료
+		}
+		else if(e.getSource()==menuP.findBtn)
+		{
+			ctrP.card.show(ctrP, "FIND");
 		}
 		else if(e.getSource()==ctrP.chatP.tf)
 		{
@@ -219,10 +208,10 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 			loginP.setVisible(true);
 			joinP.setVisible(false);
 		}
-		else if(e.getSource()==menuP.homeBtn)
-		{
-			card.show(ctrP.homeP,"HOME");
-		}
+//		else if(e.getSource()==menuP.homeBtn)
+//		{
+//			card.show(ctrP.homeP,"HOME");
+//		}
 		else if(e.getSource()==joinP.idCheck)// 아이디 중복 체크
 		{
 			idFrm.idTf.setText("");
@@ -428,36 +417,7 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 				joinP.addr1F.setText(addr);
 				post.setVisible(false);
 			}
-		if(e.getSource() == ctrP.homeP.prevBtn)
-			{
-				try 
-				{
-					if(ctrP.homeP.curpage>1)
-					{
-						ctrP.homeP.cardInit(ctrP.homeP.bookList);
-						ctrP.homeP.curpage++;
-						ctrP.homeP.cardPrint(ctrP.homeP.bookList);
-						ctrP.card.show(ctrP, "HOME");
-					}
-				}catch(Exception ex) {ex.printStackTrace();}
-			}
-		WikiDAO dao = WikiDAO.newInstance();
-		ArrayList<WikiVO> bookList = dao.wikiListData(ctrP.homeP.curpage);
-		if(e.getSource()== ctrP.homeP.nextBtn)
-			{
-				try
-				{
-					if(ctrP.homeP.curpage<ctrP.homeP.totalpage)
-					{
-						System.out.println("next");
-						ctrP.homeP.cardInit(ctrP.homeP.bookList);
-						ctrP.homeP.curpage++;
-						ctrP.homeP.cardPrint(ctrP.homeP.bookList);
-						ctrP.card.show(ctrP, "HOME");
-					}
-				}catch(Exception ex) {ex.printStackTrace();}
-				
-			}
+		
 		}
 		
 	}

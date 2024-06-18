@@ -143,7 +143,7 @@ public class JoinPanel extends JFrame{
 		btnP.setBounds(10, 660, 940, 35);
 		add(btnP);
 		
-		setSize(960,700);
+		setSize(960,750);
 
     }
 }
