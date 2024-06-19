@@ -16,7 +16,7 @@ import com.sist.dao.*;
 
 // 사번의 정보를 출력 => 조인
 
-public class HomePanel extends JPanel implements ActionListener,MouseListener{
+public class HomePanel extends JPanel implements ActionListener, MouseListener{
 	JPanel pan=new JPanel();
 	JButton prevBtn,nextBtn;
 	JLabel[] imgs=new JLabel[12]; 
@@ -29,12 +29,13 @@ public class HomePanel extends JPanel implements ActionListener,MouseListener{
 	// 데이터베이스 연결
 	WikiDAO dao;
 	// 초기화 
-    ControllPanel ctrp;
+    ControllPanel ctrP;
+    TableColumn column;
 
 		
 		public HomePanel(ControllPanel ctrp)
 		{
-			this.ctrp=ctrp;
+			this.ctrP=ctrp;
 			dao=WikiDAO.newInstance();
 			pan.setLayout(new GridLayout(3,4,5,5));
 			pan.setBounds(20, 15, 650, 620);
@@ -44,6 +45,8 @@ public class HomePanel extends JPanel implements ActionListener,MouseListener{
 		    nextBtn=new JButton("다음");	    
 			setLayout(null);
 			JPanel p=new JPanel();
+			prevBtn.setFont(new Font("맑은 고딕",Font.PLAIN,15));
+			nextBtn.setFont(new Font("맑은 고딕",Font.PLAIN,15));
 		    p.add(prevBtn); p.add(pageLa); p.add(nextBtn);
 		    p.setBounds(100, 640, 600, 30);
 		    add(p);
@@ -62,7 +65,14 @@ public class HomePanel extends JPanel implements ActionListener,MouseListener{
 			JScrollPane js = new JScrollPane(bestTable);
 			js.setBounds(670,75,230,400);
 			add(js);
-			
+			for(int i=0;i<col.length;i++)
+	    	{
+	    		column=bestTable.getColumnModel().getColumn(i);
+	    		if(i==0)
+	    			column.setPreferredWidth(30);
+	    		else if(i==1)
+	    			column.setPreferredWidth(200);
+	    	}
 			prevBtn.addActionListener(this);
 	    	nextBtn.addActionListener(this);
 				// 데이터 첨부
@@ -98,6 +108,7 @@ public class HomePanel extends JPanel implements ActionListener,MouseListener{
 	    		}catch(Exception ex){}
 	    		
 	    		pageLa.setText(curpage+" page / "+totalpage+" pages");
+	    		pageLa.setFont(new Font("맑은 고딕",Font.PLAIN,15));
 	    	}
 		}
 		
@@ -146,12 +157,22 @@ public class HomePanel extends JPanel implements ActionListener,MouseListener{
 					{
 						String no=imgs[i].getToolTipText();
 						no=no.substring(no.lastIndexOf("^")+1);
-						ctrp.detailP.print(Integer.parseInt(no));
-						ctrp.card.show(ctrp, "DETAIL");
+						ctrP.detailP.print(Integer.parseInt(no));
+						ctrP.card.show(ctrP, "DETAIL");
 					}
 				}
 			}
-		}
+		    if(e.getSource()==bestTable)
+				{
+					if(e.getClickCount()==2)
+					{
+						int row=bestTable.getSelectedRow();
+						String no=model.getValueAt(row, 0).toString();
+						ctrP.detailP.print(Integer.parseInt(no));
+						ctrP.card.show(ctrP, "DETAIL");
+					}
+				}
+			}
 
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -172,7 +193,7 @@ public class HomePanel extends JPanel implements ActionListener,MouseListener{
 			{
 				if(e.getSource()==imgs[i])
 				{
-					imgs[i].setBorder(new LineBorder(Color.blue,2));
+					imgs[i].setBorder(new LineBorder(Color.LIGHT_GRAY,2));
 					}
 				}
 			}

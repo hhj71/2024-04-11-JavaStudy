@@ -16,6 +16,8 @@ public class DetailPanel extends JPanel implements ActionListener,ItemListener{
 	JLabel numLa,totalpriceLa, noteLa;
 	ControllPanel ctrP;// 화면 이동
 	WikiDAO dao;
+	int hit=0;
+	
 	public DetailPanel(ControllPanel ctrP)
 	  {
 		dao=WikiDAO.newInstance();
@@ -26,35 +28,43 @@ public class DetailPanel extends JPanel implements ActionListener,ItemListener{
 		add(imageLa);
 		
 		booknameLa = new JLabel();
-		booknameLa.setBounds(470, 15, 400, 100);
+		booknameLa.setBounds(470, 15, 440, 110);
+		booknameLa.setFont(new Font("맑은 고딕", Font.BOLD, 30));
 		add(booknameLa);
 	
 		writerLa = new JLabel();
-		writerLa.setBounds(470,120,400,30);
+		writerLa.setBounds(470,125,400,30);
+		writerLa.setFont(new Font("맑은 고딕",Font.PLAIN,15));
 		add(writerLa);
 		
 		transLa = new JLabel();
 		transLa.setBounds(470, 155, 400, 30);
+		transLa.setFont(new Font("맑은 고딕",Font.PLAIN,15));
 		add(transLa);
 				
 		pageLa = new JLabel();
 		pageLa.setBounds(470, 190, 200, 30);
+		pageLa.setFont(new Font("맑은 고딕",Font.PLAIN,15));
 		add(pageLa);
 				
 		priceLa = new JLabel();
 		priceLa.setBounds(470, 225, 400, 30);
+		priceLa.setFont(new Font("맑은 고딕",Font.PLAIN,15));
 		add(priceLa);
 				
 		pubdateLa = new JLabel();
 		pubdateLa.setBounds(470, 260, 400, 30);
+		pubdateLa.setFont(new Font("맑은 고딕",Font.PLAIN,15));
 		add(pubdateLa);
 				
 		seriesLa = new JLabel();
 		seriesLa.setBounds(470, 295, 300, 30);
+		seriesLa.setFont(new Font("맑은 고딕",Font.PLAIN,15));
 		add(seriesLa);
 				
-		numLa = new JLabel("수량: ");
+		numLa = new JLabel("수량 ");
 		numLa.setBounds(470, 330, 40, 30);
+		numLa.setFont(new Font("맑은 고딕",Font.PLAIN,15));
 		add(numLa);
 		
 		box=new JComboBox<Integer>();
@@ -65,22 +75,31 @@ public class DetailPanel extends JPanel implements ActionListener,ItemListener{
 		box.addItem(5);
 		box.addItem(6);
 		box.addItem(7);
-		box.setBounds(510, 330, 200, 30);
+		box.setBounds(530, 330, 100, 30);
 		add(box);
 		
-		noteLa = new JLabel("최대 7개까지 구매하실 수 있습니다."); 
-		noteLa.setBounds(470, 365, 200, 30);
+		noteLa = new JLabel("최대 구매 수량은 7개입니다."); 
+		noteLa.setFont(new Font("맑은 고딕",Font.BOLD,13));
+		noteLa.setForeground(Color.red);
+		noteLa.setBounds(470, 370, 200, 30);
 		add(noteLa);
 		
 		totalpriceLa = new JLabel();
-		totalpriceLa.setBounds(470, 405, 380, 40);
+		totalpriceLa.setBounds(470, 420, 380, 40);
+		totalpriceLa.setFont(new Font("맑은 고딕",Font.BOLD,22));
 		add(totalpriceLa);
 		
-		cartBtn = new JButton("장바구니");
-		listBtn = new JButton("목록");
+		cartBtn = new JButton(" 장바구니 ");
+		listBtn = new JButton(" 목록 ");
 		JPanel p=new JPanel();
+		cartBtn.setFont(new Font("맑은 고딕", Font.BOLD, 27));
+		listBtn.setFont(new Font("맑은 고딕", Font.BOLD, 27));
+		cartBtn.setBackground(new Color(156,156,156));
+		listBtn.setBackground(new Color(156,156,156));
+		cartBtn.setForeground(Color.WHITE);
+		listBtn.setForeground(Color.WHITE);
 		p.add(cartBtn);p.add(listBtn);
-		p.setBounds(470, 460, 450, 55);
+		p.setBounds(400, 510, 500, 100);
 		add(p);
 		
 		listBtn.addActionListener(this);
@@ -101,7 +120,7 @@ public class DetailPanel extends JPanel implements ActionListener,ItemListener{
 		  writerLa.setText("지은이: "+ vo.getWRITER());
 		  transLa.setText("옮긴이: "+vo.getTRANSLATOR());
 		  pageLa.setText("페이지: "+vo.getPAGE());
-		  priceLa.setText("가격: "+vo.getPRICE()+"원");
+		  priceLa.setText("가격:  "+vo.getPRICE()+"원");
 		  pubdateLa.setText("발행일: "+vo.getPUBDATE());
 		  seriesLa.setText("시리즈: "+vo.getSERIES());
 	 }  
@@ -119,7 +138,8 @@ public class DetailPanel extends JPanel implements ActionListener,ItemListener{
 			
 			DecimalFormat df=new DecimalFormat("##,###,###");
 			String s=df.format(total);
-			totalpriceLa.setText("총 구매 가격:"+s+"원");
+			totalpriceLa.setText("총 구매 가격: "+s+"원");
+			hit+=account;
 		}
 	}
 
@@ -130,7 +150,10 @@ public class DetailPanel extends JPanel implements ActionListener,ItemListener{
 		{
 			ctrP.card.show(ctrP, "HOME");
 		}
-	
+		if(e.getSource()==cartBtn)
+		{
+			
+		}
 	}
+  }
 
-}

@@ -9,12 +9,12 @@ public class MenuPanel extends JPanel{
 			// 세로 메뉴 => setLayout(new GridLayout(6,1,5,5));
 		homeBtn = new JButton("홈");
 		findBtn = new JButton("도서 검색");
-		boardBtn = new JButton("커뮤니티");
+		boardBtn = new JButton("게시판");
 		chatBtn = new JButton("실시간 채팅");
 		newsBtn = new JButton("뉴스 검색");
-		exitBtn = new JButton("나가기");
 		myBtn = new JButton("마이페이지");
-		
+		exitBtn = new JButton("나가기");
+	
 		add(homeBtn);
 		add(findBtn);
 		add(boardBtn);

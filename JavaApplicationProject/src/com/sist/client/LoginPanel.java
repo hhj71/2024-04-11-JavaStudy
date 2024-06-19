@@ -14,10 +14,11 @@ public class LoginPanel extends JFrame{
 		setContentPane(new JPanel(){
 
 			@Override
-			protected void printComponent(Graphics g) {
+			protected void paintComponent(Graphics g) {
 				// TODO Auto-generated method stub
-				g.drawImage(back, 0, 0, getWidth(), getHeight(), this);
-				super.printComponent(g);
+				//super.paintComponent(g);
+				g.drawImage(back, 0, 0,getWidth(),getHeight(),this);
+				
 			}
 			
 		});
@@ -60,7 +61,7 @@ public class LoginPanel extends JFrame{
 		p.setBounds(10,380,940,35);
 		add(p);
 		
-		setSize(960,700);
+		setSize(960,780);
 		setVisible(true);
 	}
 // 스킨 => 이미지 배경
