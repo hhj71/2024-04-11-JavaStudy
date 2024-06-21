@@ -9,6 +9,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.table.*;
 
 import com.sist.commons.ImageChange;
@@ -31,6 +33,8 @@ public class HomePanel extends JPanel implements ActionListener, MouseListener{
 	// 초기화 
     ControllPanel ctrP;
     TableColumn column;
+    String myId;
+    int number=1;
 
 		
 		public HomePanel(ControllPanel ctrp)
@@ -38,7 +42,7 @@ public class HomePanel extends JPanel implements ActionListener, MouseListener{
 			this.ctrP=ctrp;
 			dao=WikiDAO.newInstance();
 			pan.setLayout(new GridLayout(3,4,5,5));
-			pan.setBounds(20, 15, 650, 620);
+			pan.setBounds(20, 17, 650, 620);
 		    setLayout(null);
 		    add(pan);
 		    prevBtn=new JButton("이전");
@@ -55,37 +59,56 @@ public class HomePanel extends JPanel implements ActionListener, MouseListener{
 		    setLayout(null);
 		    titleLa = new JLabel("베스트셀러");
 			titleLa.setFont(new Font("맑은 고딕", Font.BOLD, 22));
-			titleLa.setBounds(720,25,130,50);
+			titleLa.setBounds(745,25,130,50);
 			add(titleLa);
-			setLayout(null);
-			String[] col = {"순위", "도서명"};
-			String[][] row = new String[0][2];
-			model = new DefaultTableModel(row,col);
+			
+			String[] col = {"순위","도서명","."};
+			Object[][] row = new String[0][3];
+			model = new DefaultTableModel(row,col)
+			{
+				@Override
+				public boolean isCellEditable(int row, int column) {
+					// TODO Auto-generated method stub
+					return false;
+				}	
+			};
 			bestTable = new JTable(model);
+			bestTable.setRowHeight(30);
+			bestTable.getTableHeader().setBackground(Color.pink);
 			JScrollPane js = new JScrollPane(bestTable);
-			js.setBounds(670,75,230,400);
+			js.setBounds(675,75,250,400);
 			add(js);
-			for(int i=0;i<col.length;i++)
+			prevBtn.addActionListener(this);
+	    	nextBtn.addActionListener(this);
+	    	bestTable.addMouseListener(this);
+	    	
+	    	for(int i=0;i<col.length;i++)
 	    	{
 	    		column=bestTable.getColumnModel().getColumn(i);
 	    		if(i==0)
 	    			column.setPreferredWidth(30);
 	    		else if(i==1)
 	    			column.setPreferredWidth(200);
+	    		else if(i==2)
+	    			column.setPreferredWidth(0);
 	    	}
-			prevBtn.addActionListener(this);
-	    	nextBtn.addActionListener(this);
 				// 데이터 첨부
-//				WikiDAO dao1 = WikiDAO.newInstance();
-//				ArrayList<CartVO> list1 = dao.CartListData();  // 구매순위가 있는 데이터가 필요함
-//				for(CartVO vo: list1)
-//				{
-//					String[] data = {
-//							vo.get구매횟수
-//							vo.get도서명()
-//						};
-//					model.addRow(data);
-//				}
+				WikiDAO dao = WikiDAO.newInstance();
+				List<BookCartVO> list = dao.bestSeller();  // 구매순위가 있는 데이터가 필요함
+				for(BookCartVO vo: list)
+				{
+					try{
+						Object[] data = {
+							 
+							number,
+							vo.getWvo().getBOOKNAME(),
+							vo.getBnum()
+						};
+						
+						model.addRow(data);
+					}catch(Exception ex) {ex.printStackTrace();}
+					number++;
+				}
 				   
 		}
 	    // 데이터 첨부
@@ -157,7 +180,7 @@ public class HomePanel extends JPanel implements ActionListener, MouseListener{
 					{
 						String no=imgs[i].getToolTipText();
 						no=no.substring(no.lastIndexOf("^")+1);
-						ctrP.detailP.print(Integer.parseInt(no));
+						ctrP.detailP.print(Integer.parseInt(no),myId);
 						ctrP.card.show(ctrP, "DETAIL");
 					}
 				}
@@ -167,9 +190,10 @@ public class HomePanel extends JPanel implements ActionListener, MouseListener{
 					if(e.getClickCount()==2)
 					{
 						int row=bestTable.getSelectedRow();
-						String no=model.getValueAt(row, 0).toString();
-						ctrP.detailP.print(Integer.parseInt(no));
+						String no=model.getValueAt(row, 2).toString();
+						ctrP.detailP.print(Integer.parseInt(no),myId);
 						ctrP.card.show(ctrP, "DETAIL");
+						
 					}
 				}
 			}

@@ -7,37 +7,49 @@ import javax.swing.text.Document;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 public class ChatPanel extends JPanel{
-    JTextPane pane;
-    JTextField tf;
-    JComboBox<String> box1,box2;
-    JTable table; 
+	JTextPane chatpane;
+    JTextField chatInput;
+    JComboBox<String> colorBox, userBox;
+    JTable table;
     DefaultTableModel model;
-    JButton b1,b2;
+    JButton oneBtn, infoBtn;
+    JScrollBar chatBar;
+    // 상담
+    JLabel la;
+    JTextField youTf, sendTf;
+    JTextArea oneChat;
+    JButton ob;
+    JPanel pan = new JPanel();
+    
     public ChatPanel()
     {
     	setLayout(null);
-    	pane=new JTextPane();
-    	JScrollPane js1=new JScrollPane(pane);
-    	js1.setBounds(10, 15, 480, 480);
-    	add(js1);
-    	pane.setEditable(false);
+    	chatpane=new JTextPane();
+        JScrollPane js1=new JScrollPane(chatpane);
+        js1.setBounds(10, 45, 630, 570);
+        add(js1);
+        chatBar=js1.getVerticalScrollBar();
+        chatpane.setEditable(false);
+
     	
-    	tf=new JTextField();
-    	tf.setBounds(10, 500, 380, 30);
-    	add(tf);
+        chatInput=new JTextField();
+        chatInput.setBounds(10, 620, 525, 30);
+        add(chatInput);
+
     	
-    	box1=new JComboBox<String>();
-    	box1.addItem("black");
-    	box1.addItem("cyan");
-    	box1.addItem("yellow");
-    	box1.addItem("blue");
-    	box1.addItem("magenta");
-    	box1.addItem("green");
-    	box1.addItem("pink");
-    	box1.addItem("orange");
-    	
-    	box1.setBounds(395, 500, 100, 30);
-    	add(box1);
+        colorBox=new JComboBox<String>();
+        colorBox.addItem("black");
+        colorBox.addItem("cyan");
+        colorBox.addItem("yellow");
+        colorBox.addItem("blue");
+        colorBox.addItem("magenta");
+        colorBox.addItem("green");
+        colorBox.addItem("pink");
+        colorBox.addItem("orange");
+
+        colorBox.setBounds(540, 620, 100, 30);
+        add(colorBox);
+
     	
     	String[] col={"ID","이름","성별"};
     	String[][] row=new String[0][3];
@@ -53,50 +65,77 @@ public class ChatPanel extends JPanel{
     		
     	};
     	table=new JTable(model);
-    	JScrollPane js2=new JScrollPane(table);
-    	js2.setBounds(495, 15, 400, 400);
-    	add(js2);
+    	JScrollPane tableJs=new JScrollPane(table);
+        tableJs.setBounds(650, 45, 250, 270);
+        add(tableJs);
+
     	
-    	box2=new JComboBox<String>();
-    	box2.setBounds(495,420, 100, 30);
-    	add(box2);
+        userBox=new JComboBox<String>();
+        userBox.setBounds(650, 320, 80, 30);
+        userBox.addItem("상담자");
+        add(userBox);
     	
-    	b1=new JButton("1:1상담");
-    	b1.setBounds(600, 420, 120, 30);
+        oneBtn=new JButton("1:1상담");
+        oneBtn.setBounds(735, 320, 80, 30);
+        add(oneBtn);
+        infoBtn=new JButton("정보보기");
+        infoBtn.setBounds(820, 320, 80, 30);
+        add(infoBtn);
     	
-    	b2=new JButton("정보보기");
-    	b2.setBounds(725, 420, 100, 30);
+    	la = new JLabel("1:1 대상");
+    	youTf = new JTextField(10);
+    	youTf.setEnabled(false);
+    	ob=new JButton("종료");
     	
-    	add(b1);add(b2);
+    	oneChat=new JTextArea();
+        JScrollPane js3=new JScrollPane(oneChat);
+        oneChat.setEditable(false);
+
+    	
+    	sendTf = new JTextField(30);
+    	
+    	pan.setLayout(new BorderLayout());
+    	
+    	JPanel p = new JPanel();
+    	p.add(la); p.add(youTf); p.add(ob);
+    	pan.add("North",p);
+    	
+    	pan.add("Center",js3);
+    	pan.add("South",sendTf);
+    	
+    	pan.setBounds(650, 360, 250, 290);
+        add(pan);
+    	
+    	pan.setVisible(false);
     }
     public void initStyle()
     {
- 	   Style green=pane.addStyle("green", null);
- 	   StyleConstants.setForeground(green, Color.green);
- 	   
- 	   Style yellow=pane.addStyle("yellow", null);
- 	   StyleConstants.setForeground(yellow, Color.yellow);
- 	   
- 	   Style blue=pane.addStyle("blue", null);
- 	   StyleConstants.setForeground(blue, Color.blue);
- 	   
- 	   Style pink=pane.addStyle("pink", null);
- 	   StyleConstants.setForeground(pink, Color.pink);
- 	   
- 	   Style cyan=pane.addStyle("cyan", null);
- 	   StyleConstants.setForeground(cyan, Color.cyan);
- 	   
- 	   Style orange=pane.addStyle("orange", null);
- 	   StyleConstants.setForeground(orange, Color.orange);
- 	   
- 	   Style magenta=pane.addStyle("magenta", null);
- 	   StyleConstants.setForeground(magenta, Color.magenta);
-        
- 	   Style red=pane.addStyle("red", null);
- 	   StyleConstants.setForeground(red, Color.red);
- 	   
- 	   Style gray=pane.addStyle("gray", null);
-	   StyleConstants.setForeground(gray, Color.gray);
+    	 Style green=chatpane.addStyle("green", null);
+		   StyleConstants.setForeground(green, Color.green);
+		   
+		   Style yellow=chatpane.addStyle("yellow", null);
+		   StyleConstants.setForeground(yellow, Color.yellow);
+		   
+		   Style blue=chatpane.addStyle("blue", null);
+		   StyleConstants.setForeground(blue, Color.blue);
+		   
+		   Style pink=chatpane.addStyle("pink", null);
+		   StyleConstants.setForeground(pink, Color.pink);
+		   
+		   Style cyan=chatpane.addStyle("cyan", null);
+		   StyleConstants.setForeground(cyan, Color.cyan);
+		   
+		   Style orange=chatpane.addStyle("orange", null);
+		   StyleConstants.setForeground(orange, Color.orange);
+		   
+		   Style magenta=chatpane.addStyle("magenta", null);
+		   StyleConstants.setForeground(magenta, Color.magenta);
+	       
+		   Style red=chatpane.addStyle("red", null);
+		   StyleConstants.setForeground(red, Color.red); //알림
+		   
+		   Style gray=chatpane.addStyle("gray", null);
+		   StyleConstants.setForeground(red, Color.gray); //귓속말
     }
     
     // TextPane의 단점 => 문자열 결합 => setText()
@@ -104,8 +143,9 @@ public class ChatPanel extends JPanel{
     {
     	try
     	{
-    	  Document doc=pane.getDocument();
-    	  doc.insertString(doc.getLength(), msg+"\n", pane.getStyle(color));
+
+			Document doc=chatpane.getDocument();
+			doc.insertString(doc.getLength(), msg+"\n",chatpane.getStyle(color));
     	}catch(Exception ex){}
     	
     }

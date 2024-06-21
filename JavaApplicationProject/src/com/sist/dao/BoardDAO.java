@@ -94,7 +94,7 @@ public class BoardDAO {
    // 오라클 송수신 => Socket / OutputStream , BufferedReader => NetWork 
    private PreparedStatement ps;
    // 오라클 주소 : 상수형 
-   private final String URL="jdbc:oracle:thin:@localhost:1521:XE"; //xe=>테이블이 저장된 데이터베이스(폴더)
+   private final String URL="jdbc:oracle:thin:@192.168.10.124:1521:XE"; //xe=>테이블이 저장된 데이터베이스(폴더)
    // 객체 한번만 생성 => 싱글턴 
    private static BoardDAO dao;
    // 드라이버 등록 = 오라클 연결 = SQL문장 전송 = 결과값 읽기 = 데이터 모아서 = 윈도우로 전송 
@@ -111,7 +111,7 @@ public class BoardDAO {
    {
 	   try
 	   {
-		   conn=DriverManager.getConnection(URL,"hr","happy");
+		   conn=DriverManager.getConnection(URL,"hr2","happy");
 		   // 대문자 구분
 		   // 오라클로 명령 => conn hr/happy
 	   }catch(Exception ex) {}
@@ -189,7 +189,7 @@ public class BoardDAO {
 		   //   2page => 11 ~ 20
 		   ps=conn.prepareStatement(sql); // 먼저 전송 
 		   // 실행 요청전에 => ?에 값을 채운다 
-		   int rowSize=10;
+		   int rowSize=11;
 		   int start=(rowSize*page)-(rowSize-1); // 10-9 = 1
 		   // 2=> 20-9 => 11
 		   int end=rowSize*page;// 10 , 20

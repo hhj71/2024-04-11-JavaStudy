@@ -25,6 +25,7 @@ public class HomePanel_2 extends JPanel implements ActionListener,MouseListener{
     GoodsDAO dao;
     // 초기화 
     ControllPanel ctrp;
+    String myId;
     public HomePanel_2(ControllPanel ctrp)
     {
     	this.ctrp=ctrp;
@@ -105,8 +106,8 @@ public class HomePanel_2 extends JPanel implements ActionListener,MouseListener{
 				{
 					String no=imgs[i].getToolTipText();
 					no=no.substring(no.lastIndexOf("^")+1);
-					ctrp.detailP.print(Integer.parseInt(no));
-					ctrp.card.show(ctrp, "DP");
+					ctrp.detailP.print(Integer.parseInt(no), myId);
+					ctrp.card.show(ctrp, "DP"); 
 				}
 			}
 		}

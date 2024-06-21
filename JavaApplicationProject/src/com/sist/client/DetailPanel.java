@@ -16,8 +16,8 @@ public class DetailPanel extends JPanel implements ActionListener,ItemListener{
 	JLabel numLa,totalpriceLa, noteLa;
 	ControllPanel ctrP;// 화면 이동
 	WikiDAO dao;
-	int hit=0;
-	
+	int BNUM=0;
+	String myId;
 	public DetailPanel(ControllPanel ctrP)
 	  {
 		dao=WikiDAO.newInstance();
@@ -78,7 +78,7 @@ public class DetailPanel extends JPanel implements ActionListener,ItemListener{
 		box.setBounds(530, 330, 100, 30);
 		add(box);
 		
-		noteLa = new JLabel("최대 구매 수량은 7개입니다."); 
+		noteLa = new JLabel("최대 구매 가능 수량은 7개입니다."); 
 		noteLa.setFont(new Font("맑은 고딕",Font.BOLD,13));
 		noteLa.setForeground(Color.red);
 		noteLa.setBounds(470, 370, 200, 30);
@@ -86,28 +86,31 @@ public class DetailPanel extends JPanel implements ActionListener,ItemListener{
 		
 		totalpriceLa = new JLabel();
 		totalpriceLa.setBounds(470, 420, 380, 40);
-		totalpriceLa.setFont(new Font("맑은 고딕",Font.BOLD,22));
+		totalpriceLa.setFont(new Font("맑은 고딕",Font.BOLD,20));
 		add(totalpriceLa);
 		
 		cartBtn = new JButton(" 장바구니 ");
 		listBtn = new JButton(" 목록 ");
 		JPanel p=new JPanel();
-		cartBtn.setFont(new Font("맑은 고딕", Font.BOLD, 27));
-		listBtn.setFont(new Font("맑은 고딕", Font.BOLD, 27));
-		cartBtn.setBackground(new Color(156,156,156));
+		cartBtn.setFont(new Font("맑은 고딕", Font.BOLD, 25));
+		listBtn.setFont(new Font("맑은 고딕", Font.BOLD, 25));
+		cartBtn.setBackground(new Color(255,150,157));
 		listBtn.setBackground(new Color(156,156,156));
 		cartBtn.setForeground(Color.WHITE);
 		listBtn.setForeground(Color.WHITE);
 		p.add(cartBtn);p.add(listBtn);
-		p.setBounds(400, 510, 500, 100);
+		p.setBounds(400, 510, 450, 100);
 		add(p);
 		
+		cartBtn.addActionListener(this);
 		listBtn.addActionListener(this);
 		box.addItemListener(this);
 	  }
 	
-	public void print(int NUM)
+	public void print(int NUM, String id)
 	  {
+		 myId=id;
+		 BNUM=NUM;
 		  // 1. 오라클에서 값을 받는다 
 		  WikiVO vo=dao.bookDetailData(NUM);
 		  try
@@ -139,7 +142,6 @@ public class DetailPanel extends JPanel implements ActionListener,ItemListener{
 			DecimalFormat df=new DecimalFormat("##,###,###");
 			String s=df.format(total);
 			totalpriceLa.setText("총 구매 가격: "+s+"원");
-			hit+=account;
 		}
 	}
 
@@ -150,10 +152,26 @@ public class DetailPanel extends JPanel implements ActionListener,ItemListener{
 		{
 			ctrP.card.show(ctrP, "HOME");
 		}
-		if(e.getSource()==cartBtn)
+		else if(e.getSource()==cartBtn)
 		{
+			BookCartVO vo = new BookCartVO();
+			vo.setBnum(BNUM);
+			String id=ctrP.cMain.myId;
+			vo.setId(id);
+			int account = box.getSelectedIndex()+1;
+			vo.setAccount(account);
+			String price = totalpriceLa.getText();
+			price = price.replaceAll("[^0-9]", "");
+			vo.setPrice(Integer.parseInt(price));
+			
+			dao.bookCartInsert(vo);
+			JOptionPane.showMessageDialog(this, "장바구니에 추가되었습니다 \n마이페이지에서 확인하세요");
+			ctrP.mpP.print();
+			//이동 => 마이페이지로 이동
+			ctrP.card.show(ctrP, "MYPAGE");
 			
 		}
+		
 	}
   }
 

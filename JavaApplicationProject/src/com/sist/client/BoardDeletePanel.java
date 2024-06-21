@@ -15,17 +15,17 @@ public class BoardDeletePanel extends JPanel implements ActionListener{
 	   this.cp=cp;
 	   dao=BoardDAO.newInstance();
 	   titleLa=new JLabel("삭제하기",JLabel.CENTER);// <table>
-   	   titleLa.setFont(new Font("맑은 고딕",Font.BOLD,30)); //<h3></h3>
+   	   titleLa.setFont(new Font("맑은 고딕",Font.BOLD,25)); //<h3></h3>
    	   setLayout(null);
-   	   titleLa.setBounds(120, 15, 620, 50);
+   	   titleLa.setBounds(155, 190, 620, 50);
    	   add(titleLa);
    	   
    	   pwdLa=new JLabel("비밀번호",JLabel.CENTER);
-   	   pwdLa.setBounds(300, 75, 80, 30);
+   	   pwdLa.setBounds(320, 260, 80, 30);
    	   add(pwdLa);
    	   
    	   pf=new JPasswordField();
-   	   pf.setBounds(385, 75, 120, 30);
+   	   pf.setBounds(405, 260, 120, 30);
    	   add(pf);
    	   
    	   b1=new JButton("삭제");
@@ -33,7 +33,7 @@ public class BoardDeletePanel extends JPanel implements ActionListener{
    	   
    	   JPanel p=new JPanel();
    	   p.add(b1); p.add(b2);
-   	   p.setBounds(300, 120, 205, 35);
+   	   p.setBounds(360, 310, 205, 35);
    	   add(p);
    	   
    	   b1.addActionListener(this);
@@ -59,7 +59,7 @@ public void actionPerformed(ActionEvent e) {
 					boolean bCheck=dao.boardDelete(no, pwd);
 					if(bCheck==true)
 					{
-						JOptionPane.showMessageDialog(this, "게시물이 삭제되었습니다");
+						JOptionPane.showConfirmDialog(this, "게시물이 삭제되었습니다");
 						// 이동 
 						cp.bp.print();
 						cp.card.show(cp,"LIST");

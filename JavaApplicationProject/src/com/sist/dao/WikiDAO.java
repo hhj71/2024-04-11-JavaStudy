@@ -1,5 +1,6 @@
 package com.sist.dao;
 import java.util.*;
+import java.util.Date;
 import java.sql.*;
 import com.sist.dao.*;
 
@@ -199,24 +200,25 @@ DETAIL
 	  try
 	  {
 		  getConnection();
-		  String sql="SElECT NUM, BOOKNAME, IMAGE, PRICE "
-				  +"FROM wiki "
-				  +"WHERE BOOKNAME LIKE '%'||?||'%' "
-				  +"ORDER BY NUM ASC";
+		  String sql="SELECT num, image, bookname, writer, price, series " +
+                  "FROM wiki " +
+                  "WHERE bookname LIKE '%' || ? || '%' " +
+                  "ORDER BY num ASC";
 		  ps=conn.prepareStatement(sql);
 		  ps.setString(1, name);
 		  
 		  ResultSet rs = ps.executeQuery();
-		  while(rs.next())
-			{
-			  WikiVO vo = new WikiVO();
-				vo.setNUM(rs.getInt(1));
-				vo.setBOOKNAME(rs.getString(2));
-				vo.setIMAGE(rs.getString(3));
-				vo.setPRICE(rs.getInt(4));
-				
-				list.add(vo);
-			}
+		  while (rs.next()) {
+             WikiVO vo = new WikiVO();
+              vo.setNUM(rs.getInt(1));
+              vo.setIMAGE(rs.getString(2));
+              vo.setBOOKNAME(rs.getString(3));
+              vo.setWRITER(rs.getString(4));
+              vo.setPRICE(rs.getInt(5));
+              vo.setSERIES(rs.getString(6));
+              list.add(vo);
+          }
+          rs.close();
 		  
 	  }catch(Exception ex)
 	  {
@@ -228,11 +230,131 @@ DETAIL
 	  return list;
  }
     // 구매 => INSERT , UPDATE , DELETE 
+	/*
+	 * private int bno, bnum, price, account;
+	private String id;
+	private Date regdate;
+	 */
+ public void bookCartInsert(BookCartVO vo)
+ {
+	  try 
+	  {
+		  getConnection();
+		  String sql = "INSERT INTO bookcart(bno, bnum, id, price, account) "
+				  	  + "VALUES(bookcart_bno_seq.nextval, ?,?,?,?)";
+		  ps=conn.prepareStatement(sql);
+		  ps.setInt(1, vo.getBnum());
+		  ps.setString(2, vo.getId());
+		  ps.setInt(3, vo.getPrice());
+		  ps.setInt(4, vo.getAccount());
+		  
+		 ps.executeUpdate();
+		  
+	  }catch(Exception ex)
+	  {
+		  ex.printStackTrace();
+	  }
+	  finally
+	  {
+		  disConnection();
+	  }
+ }
+ public void bookCartCancel(int bno)
+ {
+	  try
+	  {
+		  getConnection();
+		  String sql = "DELETE FROM bookcart "
+				  		+ "WHERE bno="+bno;
+		  ps=conn.prepareStatement(sql);
+		  ps.executeUpdate();
+		  
+	  }catch(Exception ex)
+	  {
+		  ex.printStackTrace();
+	  }
+	  finally
+	  {
+		  disConnection();
+	  }
+ }
+ public List<BookCartVO> bookCartSelect(String id)
+ {
+	List<BookCartVO> list = new ArrayList<BookCartVO>();  
+	try
+	{
+		getConnection();
+		String sql = "SELECT bno, bnum, price, account," // 실무에서는 ORDER BY 느려서 잘 안쓰고 INDEX 사용함
+					+"(SELECT image FROM wiki WHERE num = bookcart.bnum),"
+					+"(SELECT bookname FROM wiki WHERE num = bookcart.bnum),"
+					+"(SELECT price FROM wiki WHERE num = bookcart.bnum) "
+					+"FROM bookcart "
+					+"WHERE id=?";
+		ps=conn.prepareStatement(sql);
+		ps.setString(1, id);
+		ResultSet rs= ps.executeQuery();
+		
+		while(rs.next())
+		{
+			BookCartVO vo = new BookCartVO();
+			vo.setBno(rs.getInt(1));
+			vo.setBnum(rs.getInt(2));
+			vo.setPrice(rs.getInt(3));
+			vo.setAccount(rs.getInt(4));
+			vo.getWvo().setIMAGE(rs.getString(5));
+			vo.getWvo().setBOOKNAME(rs.getString(6));
+			vo.getWvo().setPRICE(rs.getInt(7));
+			
+			
+			list.add(vo);
+		}
+		rs.close();
+					
+	}catch(Exception ex)
+	{
+		ex.printStackTrace();
+	}
+	finally
+	{
+		disConnection();
+	}
+	return list;
+ }
 	
-	
-	
-	
-	
+ public List<BookCartVO> bestSeller()
+ {
+	List<BookCartVO> list = new ArrayList<BookCartVO>();  
+	try
+	{
+		getConnection();
+		String sql =  "SELECT bnum,(SELECT bookname FROM wiki WHERE num = bnum) "
+				     + "FROM(SELECT bnum "
+					 + "FROM(SELECT SUM(account), bnum FROM bookcart "
+					 + "group by bnum ORDER BY SUM(account) DESC))";
+		
+		ps=conn.prepareStatement(sql);
+		ResultSet rs= ps.executeQuery();
+		
+		while(rs.next())
+		{
+			BookCartVO vo = new BookCartVO();
+			vo.setBnum(rs.getInt(1));
+			vo.getWvo().setBOOKNAME(rs.getString(2));
+			
+			list.add(vo);
+		}
+		rs.close();
+					
+	}catch(Exception ex)
+	{
+		ex.printStackTrace();
+	}
+	finally
+	{
+		disConnection();
+	}
+	return list;
+ }
 	
 	
 	

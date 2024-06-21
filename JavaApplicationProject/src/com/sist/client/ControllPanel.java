@@ -15,7 +15,9 @@ public class ControllPanel extends JPanel{
 	BoardDetailPanel bdp;
 	BoardDeletePanel bdelp;
 	BoardUpdatePanel bup;
+	NewsPanel np;
 	ChatPanel chatP = new ChatPanel();
+	MyPagePanel mpP;
 	   // 웹에서 => 화면 변경 => Controller 
 	   /*
 	    *    처리 : Model 
@@ -26,8 +28,10 @@ public class ControllPanel extends JPanel{
 	    *          ----------- JSP 
 	    *                      ThymeLeaf / Vue / React => HTML
 	    */
-	public ControllPanel()
+	ClientMain cMain;
+	public ControllPanel(ClientMain cm)
 	{
+		cMain=cm;
 		setLayout(card);
 //		add("EP",ep);
 		homeP=new HomePanel(this);
@@ -38,8 +42,11 @@ public class ControllPanel extends JPanel{
 		bdp=new BoardDetailPanel(this);
 		bdelp = new BoardDeletePanel(this); 
 		bup = new BoardUpdatePanel(this);
+		mpP = new MyPagePanel(this);
+		np = new NewsPanel(this);
 		add("HOME",homeP);
 		add("CHAT",chatP);
+		add("NEWS",np);
 		add("DETAIL",detailP);
 		add("FIND", findP);
 		add("LIST",bp);
@@ -47,6 +54,7 @@ public class ControllPanel extends JPanel{
 		add("BDETAIL",bdp);
 		add("DELETE",bdelp);
 		add("UPDATE", bup);
-		
+		add("MYPAGE",mpP); 
+				
 	}
 }
